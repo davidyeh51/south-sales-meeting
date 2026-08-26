@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>南區業務週會主席追蹤簡報與管理中樞｜進金生能源服務 × 大衛雲 2.0</title>
-<meta name="description" content="進金生能源服務南區業務週會主席管理儀表板、歷次會議決策追蹤、Pipeline商機雷達與待辦行動追蹤中樞。">
+<meta name="description" content="進金生能源服務南區業務週會主席管理儀表板、歷次會議決策追蹤、Pipeline商機雷達、FY2026業務戰略方向與待辦行動追蹤中樞。">
 <style>
 :root{
   --paper:#f7f9fb; --ink:#15202b; --muted:#5f6b76; --line:#d9e1e8;
@@ -37,8 +37,8 @@ body{
 .topbar .brand b{color:var(--ink); font-weight:800}
 .topnav{display:flex; gap:4px; flex:1; min-width:0; overflow-x:auto}
 .topnav a{
-  text-decoration:none; color:var(--muted); font-size:.84rem; font-weight:600;
-  padding:6px 12px; border-radius:5px; white-space:nowrap; border:1px solid transparent;
+  text-decoration:none; color:var(--muted); font-size:.82rem; font-weight:600;
+  padding:6px 11px; border-radius:5px; white-space:nowrap; border:1px solid transparent;
   transition:all .15s ease;
 }
 .topnav a:hover{color:var(--teal); background:var(--teal-soft)}
@@ -55,7 +55,7 @@ body{
   content:""; width:6px; height:6px; border-radius:50%; background:var(--teal);
   box-shadow:0 0 0 2px rgba(24,170,189,.25);
 }
-@media(max-width:860px){.topbar .meta{display:none}}
+@media(max-width:980px){.topbar .meta{display:none}}
 
 /* ---------- views / slides ---------- */
 .view{display:none}
@@ -75,6 +75,7 @@ body{
 .flag.amber{background:var(--amber-soft); color:#b07708}
 .flag.coral{background:var(--coral-soft); color:var(--coral)}
 .flag.teal{background:var(--teal-soft); color:var(--teal)}
+.flag.purple{background:#efe8f9; color:#68369b}
 .slide-body{flex:1; display:flex; flex-direction:column; gap:16px}
 .slide-foot{display:flex; justify-content:space-between; gap:16px; margin-top:24px; padding-top:12px; border-top:1px solid var(--line); font-size:.75rem; color:var(--muted)}
 .slide-foot .pageno{white-space:nowrap; font-weight:700}
@@ -113,12 +114,16 @@ body{
 .metric.teal{background:var(--teal-soft); border-color:#b9e4eb}
 .metric.teal .k{color:var(--teal)}
 .metric.teal .sub-tag{color:var(--teal)}
+.metric.purple{background:#f3ecfb; border-color:#d7c2f1}
+.metric.purple .k{color:#68369b}
+.metric.purple .sub-tag{color:#68369b}
 
 .big-callout{
   background:var(--brand-blue); color:#fff;
   border-radius:6px; padding:22px 26px; position:relative; overflow:hidden;
 }
 .big-callout.teal-bg{background:#117a8b}
+.big-callout.purple-bg{background:#53297a}
 .big-callout .label{font-size:.76rem; letter-spacing:.14em; opacity:.85; font-weight:800; margin-bottom:6px; text-transform:uppercase}
 .big-callout .answer{font-size:clamp(1.15rem,2.4vw,1.65rem); font-weight:800; line-height:1.38}
 .big-callout .more{margin-top:8px; font-size:.88rem; opacity:.92; line-height:1.5}
@@ -129,6 +134,7 @@ body{
 .list.amber-dot li::before{background:var(--amber)}
 .list.coral-dot li::before{background:var(--coral)}
 .list.green-dot li::before{background:var(--green)}
+.list.purple-dot li::before{background:#68369b}
 
 .table-wrap{background:#fff; border:1px solid var(--line); border-radius:6px; overflow-x:auto; margin-top:6px}
 table{width:100%; border-collapse:collapse; font-size:.86rem; min-width:560px}
@@ -157,6 +163,7 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 .formula{background:var(--green-soft); border-left:4px solid var(--green); border-radius:0 6px 6px 0; padding:12px 16px; font-size:.9rem; font-weight:600; color:var(--ink)}
 .warning-box{background:var(--coral-soft); border-left:4px solid var(--coral); border-radius:0 6px 6px 0; padding:12px 16px; font-size:.88rem; color:#842215}
 .tip-box{background:var(--teal-soft); border-left:4px solid var(--teal); border-radius:0 6px 6px 0; padding:12px 16px; font-size:.88rem; color:#0e5863}
+.purple-box{background:#f3ecfb; border-left:4px solid #68369b; border-radius:0 6px 6px 0; padding:12px 16px; font-size:.88rem; color:#4a1e75}
 
 /* ---------- Home View Layout ---------- */
 .home{max-width:1280px; margin:0 auto; padding:70px 48px 60px; min-height:100vh; display:flex; flex-direction:column}
@@ -186,6 +193,7 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   position:relative; overflow:hidden;
 }
 .part-card:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(16,37,44,.08); border-color:#b9cad9}
+.part-card.featured{border-color:var(--brand-cyan); background:linear-gradient(to bottom, #ffffff 0%, #f4fbfa 100%)}
 .part-card .pc-eyebrow{font-size:.74rem; font-weight:800; letter-spacing:.12em; color:var(--teal)}
 .part-card h2{font-size:1.2rem; font-weight:800; margin:8px 0 6px; line-height:1.32}
 .part-card p{color:var(--muted); font-size:.88rem; flex:1}
@@ -314,6 +322,7 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   </a>
   <nav class="topnav" id="topNav">
     <a href="#home" data-nav="home" class="active">首頁總覽</a>
+    <a href="#p5-1" data-nav="p5" style="color:#68369b; font-weight:700">🎯 Part 5｜2026 業務方向</a>
     <a href="#p1-1" data-nav="p1">Part 1｜08/24 核心復盤</a>
     <a href="#p2-1" data-nav="p2">Part 2｜決策歷史演進</a>
     <a href="#p3-1" data-nav="p3">Part 3｜Pipeline 商機庫</a>
@@ -335,7 +344,7 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
       <div class="eyebrow">進金生能源服務 ｜ 2.2.5 管理會議 × 南區業務週會知識庫</div>
       <h1>南區業務週會主席決策中樞</h1>
       <p class="lede">
-        統整歷次南區業務週會核心裁定、案場推展脈絡、跨部門協同機制與完整 Pipeline 商機清單。
+        統整歷次南區業務週會核心裁定、案場推展脈絡、跨部門協同機制、Pipeline 完整商機清單以及 <strong>FY2026 業務戰略方向（短期 ①–③ ｜ 中期 ④）</strong>。
         以主席視角引領業務團隊從「被動防守」轉型「主動攻方」，藉由剛需識別、資訊優勢與「邊做邊過關」策略，全力衝刺 2026 待簽業績並奠定 2027 爆發基礎。
       </p>
       
@@ -357,6 +366,31 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
           <div class="l">Pipeline 商機池總規模（40+ 專案）</div>
         </div>
       </div>
+    </div>
+
+    <div class="section-title">重要戰略核心 · 業務方向指引 (Strategy Focus)</div>
+    <div class="part-cards" style="grid-template-columns:1fr; margin-bottom:12px">
+      <a href="#p5-1" class="part-card featured" style="border:2px solid #8e54c9; background:linear-gradient(135deg, #ffffff 0%, #fbf8ff 60%, #f3ebfc 100%)">
+        <div>
+          <div class="pc-eyebrow" style="color:#68369b">PART 5 · FY2026 業務戰略方向 (5 頁)</div>
+          <h2 style="color:#3e1666; font-size:1.35rem">🎯 2026 業務方向：短期三大支柱 ①–③ ｜ 中期旗艦 ④</h2>
+          <p style="color:#523e66; font-size:.94rem">
+            <b>短期支柱</b>：① 光＋儲（新建物法規強制設置、台積供應鏈外溢、科技業 RE100/CBAM、光電車棚、風雨球場）｜
+            ② 微網（丹娜絲防災、台電大學、教育部大學四校、軍區/醫院防災微電網）｜
+            ③ 資產管理（國泰電業 12.7MW 整新整改轉維運、建坤新專案與案場收購）<br>
+            <b>中期旗艦</b>：④ AIDC 開發 ＋ 灰區電力（台哥大算力出租 ＋ 富邦能源資產持有 ＋ 進能服電力交付端黃金三角）。
+          </p>
+        </div>
+        <div style="margin-top:12px">
+          <div class="pc-flags">
+            <span class="flag purple">① 光儲五大引擎</span>
+            <span class="flag teal">② 微網四軌道</span>
+            <span class="flag green">③ 國泰整新/建坤收購</span>
+            <span class="flag coral">④ AIDC 灰區電力</span>
+          </div>
+          <div class="pc-go" style="color:#68369b">進入 Part 5（2026 業務方向深度解析）→</div>
+        </div>
+      </a>
     </div>
 
     <div class="section-title">週會模組導覽 (Meeting Modules)</div>
@@ -428,6 +462,11 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 
     <div class="section-title">歷次會議快速跳轉 (Meeting Archives)</div>
     <div class="meeting-history-grid">
+      <a href="#p5-1" class="meeting-tile" style="background:#f7f0fc; border-color:#c8a7ea">
+        <div class="m-date" style="color:#68369b">FY2026 業務戰略</div>
+        <div class="m-title" style="color:#42176e">業務方向與四大支柱</div>
+        <div class="m-desc">短期①光儲 ②微網 ③資產管理 ｜ 中期④AIDC灰區電力</div>
+      </a>
       <a href="#p1-1" class="meeting-tile">
         <div class="m-date">2026-08-24 週會 (#005)</div>
         <div class="m-title">Y2026 業績全貌與奇景復盤</div>
@@ -448,11 +487,6 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
         <div class="m-title">8月盤點與國泰合作架構</div>
         <div class="m-desc">國泰7.3MW/5.4MW分潤、儲能1MW收益、案場收購新商模、世德1999kW</div>
       </a>
-      <a href="#p2-4" class="meeting-tile">
-        <div class="m-date">2026-07-27 週會</div>
-        <div class="m-title">7月月度復盤與標案轉向</div>
-        <div class="m-desc">光電轉向防微微電網/複合電網、東陽/世德大案、遠期案件維護規則</div>
-      </a>
       <a href="#tracker" class="meeting-tile" style="background:var(--green-soft); border-color:var(--green);">
         <div class="m-date" style="color:var(--green)">全域待辦行動池</div>
         <div class="m-title" style="color:var(--green)">🎯 主席 Follow-up 追蹤中心</div>
@@ -462,6 +496,15 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 
     <div class="section-title">簡報全目錄 (Table of Contents)</div>
     <div class="toc">
+      <div class="card" style="border-left:4px solid #68369b">
+        <h3 style="color:#68369b">PART 5 · FY2026 業務戰略方向</h3>
+        <a href="#p5-1"><span class="no" style="color:#68369b">1</span>2026 業務方向全景矩陣 (短期①–③ ｜ 中期④)</a>
+        <a href="#p5-2"><span class="no" style="color:#68369b">2</span>短期支柱 ①：光 ＋ 儲（五大驅動引擎）</a>
+        <a href="#p5-3"><span class="no" style="color:#68369b">3</span>短期支柱 ②：微 網（公部門與防災微電網四軌道）</a>
+        <a href="#p5-4"><span class="no" style="color:#68369b">4</span>短期支柱 ③：資產管理（國泰整新 ＋ 建坤收購）</a>
+        <a href="#p5-5"><span class="no" style="color:#68369b">5</span>中期旗艦 ④：AIDC 開發 ＋ 灰區電力黃金三角</a>
+      </div>
+
       <div class="card">
         <h3>PART 1 · 08/24 核心週會復盤</h3>
         <a href="#p1-1"><span class="no">1</span>一句話結論與主席總體裁決</a>
@@ -506,6 +549,343 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
       <div>系統：大衛雲 2.0 · 會議主席：葉大衛 (David Yeh)</div>
     </div>
   </div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- PART 5 : FY2026 業務戰略方向 (FY2026_業務方向.pptx)                       -->
+<!-- ========================================================================= -->
+<section class="view" id="view-p5">
+
+  <!-- P5-1 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:#68369b">PART 5 · FY2026 業務戰略方向 (第 1 頁)</div>
+        <h2>2026 業務方向全景矩陣</h2>
+        <p class="sub">戰略清晰定位：短期三大支柱（①光儲 ②微網 ③資產管理）聚焦現金流與規模；中期旗艦（④AIDC ＋ 灰區電力）卡位算力能源交付。</p>
+      </div>
+      <div class="flags">
+        <span class="flag purple">FY2026 戰略總綱</span>
+        <span class="flag teal">短期 ①–③ 支柱</span>
+        <span class="flag coral">中期 ④ 算力電力</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="big-callout purple-bg">
+        <div class="label">STRATEGIC COMPASS · FY2026 業務戰略羅盤</div>
+        <div class="answer">「短期靠光儲法規剛需與微網公共預算穩固現金流，藉資產管理擴大運維規模；中期全面切入 AIDC 與灰區電力，成為台灣算力中心的能源交付核心！」</div>
+        <div class="more">
+          南區業務全員需對齊此戰略矩陣，精準配置時間與資源，不打無準備之仗。
+        </div>
+      </div>
+
+      <div class="four-col">
+        <div class="card" style="border-top:4px solid var(--green)">
+          <div class="chip green" style="margin-bottom:6px">短期 ①</div>
+          <h3>☀️ 光 ＋ 儲</h3>
+          <p><b>五大剛性引擎</b>：</p>
+          <ul class="list green-dot" style="font-size:.84rem">
+            <li><b>新建物法規</b>：8/1強制設置屋頂案</li>
+            <li><b>台積供應鏈</b>：供應商減碳外溢</li>
+            <li><b>科技業 RE</b>：RE100 / CBAM 剛需</li>
+            <li><b>光電車棚</b>：停車場複合利用</li>
+            <li><b>風雨球場</b>：校園 / 公有場域</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--teal)">
+          <div class="chip teal" style="margin-bottom:6px">短期 ②</div>
+          <h3>⚡ 微 網</h3>
+          <p><b>公部門防災軌道</b>：</p>
+          <ul class="list" style="font-size:.84rem">
+            <li><b>丹娜絲防災</b>：FY26-27 / FY27-30</li>
+            <li><b>台電大學</b>：FY25-27 示範案</li>
+            <li><b>教育部大學</b>：FY26-27 四校9MW</li>
+            <li><b>關鍵基建防災</b>：軍區 / 醫院 (TBD)</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--amber)">
+          <div class="chip amber" style="margin-bottom:6px">短期 ③</div>
+          <h3>🏛️ 資產管理</h3>
+          <p><b>收購與運維雙軌</b>：</p>
+          <ul class="list amber-dot" style="font-size:.84rem">
+            <li><b>國泰電業</b>：整新/整改 ➔ 轉維運</li>
+            <li><b>建　坤</b>：新專案開發 ＋ 案場收購</li>
+            <li><b>收購模式</b>：資金視角切入既有案場</li>
+            <li><b>業績雙向</b>：開發轉運維業績仍歸業務</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--coral); background:#fffaf9">
+          <div class="chip coral" style="margin-bottom:6px">中期 ④</div>
+          <h3>🖥️ AIDC ＋ 灰區電力</h3>
+          <p><b>算力能源交付端</b>：</p>
+          <ul class="list coral-dot" style="font-size:.84rem">
+            <li><b>台哥大 (TWM)</b>：算力或設施出租</li>
+            <li><b>富邦能源</b>：持有算力中心設施</li>
+            <li><b>進能服 (ACME)</b>：<b>電力交付端</b></li>
+            <li><b>模組化</b>：5MW貨櫃型快速部署</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>資料來源：FY2026_業務方向.pptx ｜ 主席：葉大衛</span>
+      <span class="pageno">Part 5 - 1 / 5</span>
+    </div>
+  </div>
+
+  <!-- P5-2 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:#68369b">PART 5 · FY2026 業務戰略方向 (第 2 頁)</div>
+        <h2>短期支柱 ①：光 ＋ 儲（五大驅動引擎）</h2>
+        <p class="sub">深耕光電與表後儲能：新建物法規強制設置、台積供應鏈外溢、RE100/CBAM、光電車棚與風雨球場。</p>
+      </div>
+      <div class="flags">
+        <span class="flag green">光儲五大引擎</span>
+        <span class="flag teal">8/1 法規紅利</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="split-40">
+        <div class="card" style="background:var(--green-soft); border-color:#bfd2e6">
+          <h3>🎯 光儲業務核心戰術</h3>
+          <p><b>1. 鎖定 70% 剛需</b>：拒絕無預算、無時間表的偽商機，主力部隊集結於法規強制與減碳合規案場。</p>
+          <p><b>2. 搶饋線為第一優先</b>：以「邊做邊過關」策略，先簽約搶下饋線排隊，後補技術細節。</p>
+          <p><b>3. 光儲複合加值</b>：以表後儲能（削峰填谷＋防超約＋夜尖峰套利）拉高光電案場單價與客戶黏著度。</p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3>🏢 1. 新建物法規強制設置</h3>
+            <p>8/1 起新建物強制配套光電，帶動龐大屋頂剛需案源。</p>
+            <div class="formula" style="margin-top:6px">
+              <b>標竿落地</b>：特嘉食品 (600kW)、天守實業 (900kW)、和富工業 (424kW)、駱恒（法規認知破口複製）。
+            </div>
+
+            <h3 style="margin-top:12px">🔬 2. 台積供應鏈減碳外溢</h3>
+            <p>台積電對其 Tier-1/Tier-2 供應鏈要求嚴苛 ESG 與綠電佔比。</p>
+            <div class="tip-box" style="margin-top:6px">
+              <b>標竿落地</b>：MERCK 新廠 (434kW)、穩懋半導體 (150kW)、奇景光電 (471kW IE100目標)。
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🌿 3. 科技業 RE100 / CBAM 剛需</h3>
+            <p>歐盟 CBAM 碳關稅與國際品牌客戶 RE100 強制要求，大型製造業自建自用光電意願極高。</p>
+
+            <h3 style="margin-top:12px">🅿️ 4. 光電車棚（停車場複合利用）</h3>
+            <p>停車場結合光電遮陽棚，創造高單價複合利用商機。</p>
+            <div class="tip-box" style="margin-top:6px">
+              <b>標竿落地</b>：台糖明正 (3.3MW/2.31億)、台糖大型車輛 (>20MW/7億)、奇景總部停車場。
+            </div>
+
+            <h3 style="margin-top:12px">🏟️ 5. 風雨球場（校園/公有場域）</h3>
+            <p>校園運動場與公有地光電複合覆蓋，如中山大學風雨球場 (1.3MW)。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>FY2026 業務方向 · 支柱 ①</span>
+      <span class="pageno">Part 5 - 2 / 5</span>
+    </div>
+  </div>
+
+  <!-- P5-3 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:#68369b">PART 5 · FY2026 業務戰略方向 (第 3 頁)</div>
+        <h2>短期支柱 ②：微 網（公部門與防災軌道）</h2>
+        <p class="sub">聚焦預算明確、期程固定的微電網標案：丹娜絲防災、台電大學、教育部大學與軍區/醫院微電網。</p>
+      </div>
+      <div class="flags">
+        <span class="flag teal">微電網四軌道</span>
+        <span class="flag green">教育部四校 9MW</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="four-col">
+        <div class="card" style="border-top:4px solid var(--teal)">
+          <h3>🌪️ 丹娜絲防災微電網</h3>
+          <p><b>專案週期</b>：</p>
+          <div class="formula" style="margin:8px 0">FY26–27 ｜ FY27–30</div>
+          <p style="font-size:.84rem">國家級極端氣候防災韌性電網標案，具備長期預算支持，提前掌握標前規格。</p>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--green)">
+          <h3>⚡ 台電大學微電網</h3>
+          <p><b>專案週期</b>：</p>
+          <div class="formula" style="margin:8px 0">FY25–27</div>
+          <p style="font-size:.84rem">台電出資之大學校園微電網示範專案，結合光電、儲能與智慧能源管理 EMS。</p>
+        </div>
+
+        <div class="card" style="border-top:4px solid #68369b">
+          <h3>🎓 教育部大學微電網</h3>
+          <p><b>專案週期</b>：</p>
+          <div class="formula" style="margin:8px 0">FY26–27 (合計 9MW)</div>
+          <ul class="list" style="font-size:.82rem">
+            <li><b>中山大學</b>：3MW / 9,000萬 (S2)</li>
+            <li><b>高科大</b>：2MW / 6,000萬 (S1)</li>
+            <li><b>嘉義大學</b>：2MW / 6,000萬 (S1)</li>
+            <li><b>宜蘭大學</b>：2MW / 6,000萬 (S0)</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--coral)">
+          <h3>🏥 關鍵基建防災微電網</h3>
+          <p><b>場域對象 (TBD)</b>：</p>
+          <div class="formula" style="margin:8px 0">軍區 ｜ 衛福部醫院</div>
+          <p style="font-size:.84rem">汲取日本熊本地震經驗，為國防軍區與醫療院所建置離網不斷電防災微電網（如屏東防災三案、茂隆骨科）。</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:4px">
+        <h3>💡 主席指示：微電網標案致勝關鍵（軟硬整合）</h3>
+        <p>
+          微電網標案的核心門檻在於 <strong>EMS 能源管理系統軟體規格與電力調度演算法</strong>。
+          業務團隊（Lucy/Julia/Duck）需提前與 EMS 合作夥伴及學校 PCM 顧問密切對接，將我方技術規格置入標書前端！
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>FY2026 業務方向 · 支柱 ②</span>
+      <span class="pageno">Part 5 - 3 / 5</span>
+    </div>
+  </div>
+
+  <!-- P5-4 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:#68369b">PART 5 · FY2026 業務戰略方向 (第 4 頁)</div>
+        <h2>短期支柱 ③：資產管理（國泰整新 ＋ 建坤收購）</h2>
+        <p class="sub">跳脫純代工思維，以資產與資金視角切入既有案場整新與收購，擴大維運長線收益。</p>
+      </div>
+      <div class="flags">
+        <span class="flag amber">資產管理商模</span>
+        <span class="flag green">國泰 12.7MW</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="two-col">
+        <div class="card" style="border-left:4px solid var(--green)">
+          <h3>🏛️ 1. 國泰電業：整新 / 整改 ➔ 轉維運</h3>
+          <p>國泰 12.7MW 既有案場分兩大路徑推進：</p>
+          <ul class="list green-dot">
+            <li><b>7.3MW 低/無整改效益案</b>：以「運維接手保發」模式承接，獲取長期穩定維運服務費。</li>
+            <li><b>5.4MW 高整改效益案</b>：採<strong>「客戶零出資、進金生先墊付整改工程費、前幾年分潤回收成本」</strong>模式，兼得 EPC 利潤與後續長約維運。</li>
+            <li><b>埤塘整新</b>：國泰 8-13 埤塘 (1.88MW) 與 346 整改案，月底前完成 BOM 測算。</li>
+          </ul>
+          <div class="formula" style="margin-top:10px">
+            <b>業績激勵機制</b>：業務開發之整新案轉由運維團隊執行，<strong>業績依然完整歸算業務績效</strong>！
+          </div>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--amber)">
+          <h3>🏢 2. 建坤合作：新專案開發 ＋ 案場收購 (Asset Acquisition)</h3>
+          <p><b>傳統瓶頸</b>：從零開發案場面積小、行政審查期長達 1~2 年。</p>
+          <div class="tip-box">
+            <b>案場收購 (M&A) 新路徑</b>：<br>
+            以資產管理與投資人角度，直接<strong>收購已併網或即將併網之成熟案場</strong>，透過更換高效率模組（如 695W）與加裝儲能系統進行資產重組，快速擴大營收！
+          </div>
+          <p style="margin-top:10px; font-size:.86rem; color:var(--muted)">
+            <b>建坤新專案</b>：和富工業 (424kW) 採「建坤租約 ＋ 進金生移轉協議」三方合作範本，順利複製推廣。
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🔄 開發與維運的雙向反哺飛輪</h3>
+        <p>
+          業務端開發光電 ➔ 沉澱為運維資產 ➔ 運維團隊發掘設備老化與整改需求（如維雲轉來 843kW 案源）➔ 反向回饋業務端承攬 EPC 整新工程。形成可持續滾動的營收閉環！
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>FY2026 業務方向 · 支柱 ③</span>
+      <span class="pageno">Part 5 - 4 / 5</span>
+    </div>
+  </div>
+
+  <!-- P5-5 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:#68369b">PART 5 · FY2026 業務戰略方向 (第 5 頁)</div>
+        <h2>中期旗艦 ④：AIDC 開發 ＋ 灰區電力</h2>
+        <p class="sub">黃金三角合作架構：台哥大算力出租 ＋ 富邦能源資產持有 ＋ 進能服電力交付端。</p>
+      </div>
+      <div class="flags">
+        <span class="flag coral">中期旗艦</span>
+        <span class="flag purple">AIDC 灰區電力</span>
+        <span class="flag teal">進能服電力交付</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="card" style="background:#fcf9ff; border:1px solid #d5b8f5">
+        <h3 style="color:#4a1e75">🌟 AIDC 算力中心：黃金三角協作架構</h3>
+        <div class="three-col" style="margin-top:10px">
+          <div class="card" style="background:#fff; border-top:3px solid var(--brand-blue)">
+            <b style="color:var(--brand-blue); font-size:.95rem">台灣大哥大 (TWM)</b>
+            <p style="font-size:.84rem; margin-top:4px"><b>角色定位</b>：電信營運商 / 算力租賃</p>
+            <p style="font-size:.82rem; color:var(--muted)">負責 GPU 伺服器算力出租、高速網路骨幹與算力機房設施招商營運。</p>
+          </div>
+
+          <div class="card" style="background:#fff; border-top:3px solid var(--green)">
+            <b style="color:var(--green); font-size:.95rem">富邦能源 (Fubon)</b>
+            <p style="font-size:.84rem; margin-top:4px"><b>角色定位</b>：資金方 / 資產持有者</p>
+            <p style="font-size:.82rem; color:var(--muted)">出資持有 AIDC 土地、建物與算力機房重資產，追求穩定長期租金收益。</p>
+          </div>
+
+          <div class="card" style="background:#fff; border-top:3px solid var(--coral)">
+            <b style="color:var(--coral); font-size:.95rem">進金生能源服務 (ACME)</b>
+            <p style="font-size:.84rem; margin-top:4px"><b>角色定位：電力交付端 (Power Delivery)</b></p>
+            <p style="font-size:.82rem; color:var(--muted)">負責高壓電力併網、微電網電源調度、儲能調頻削峰、燃氣發電備援與綠電匹配。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>⚡ 什麼是「灰區電力」？進能服的核心價值</h3>
+          <p>AIDC 算力中心耗電極大（單一貨櫃 1MW），台電主電網往往無法及時供應充足容量。</p>
+          <div class="purple-box" style="margin-top:6px">
+            <b>灰區電力解法</b>：<br>
+            利用「表後儲能 ＋ 燃氣/柴油發電機 ＋ 屋頂光電 ＋ 離網微電網控制」，在市電不足或申請中的「灰區過渡期」，依然能提供 99.999% 不斷電之高品質電源！
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🚀 南區業務落地推進排程</h3>
+          <ul class="list purple-dot">
+            <li><b>選址佈局</b>：以麻豆地區與桃園東河、綜合案為首選土地標的。</li>
+            <li><b>商模方案</b>：已決議<strong>先向東和提出「租金 250」方案</strong>，由 Lucy 接手推進。</li>
+            <li><b>模組化策略</b>：推動 5MW 以下貨櫃型模組化算力中心，避開大容量調頻沈重負擔。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>FY2026 業務方向 · 旗艦 ④ ｜ 前往 Part 1 檢視 08/24 核心復盤</span>
+      <span class="pageno">Part 5 - 5 / 5</span>
+    </div>
+  </div>
+
 </section>
 
 <!-- ========================================================================= -->
@@ -2450,7 +2830,7 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   <div class="progress"><div class="fill" id="progressFill"></div></div>
   <div class="hint">按 <b>←</b> <b>→</b> 鍵或 <b>空白鍵</b> 翻頁 ｜ 按 <b>F</b> 全螢幕 ｜ 按 <b>Home</b> 回首頁</div>
   <div class="ctrl">
-    <span class="counter" id="counter">1 / 7</span>
+    <span class="counter" id="counter">1 / 5</span>
     <button id="btnPrev" title="上一頁 (←)">‹</button>
     <button id="btnNext" title="下一頁 (→)">›</button>
   </div>
@@ -2460,9 +2840,10 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 (function(){
   /* ================= ROUTING & PRESENTATION ENGINE ================= */
   var state = { view:'home', idx:0 };
-  var last = { p1:0, p2:0, p3:0, p4:0 };
+  var last = { p5:0, p1:0, p2:0, p3:0, p4:0 };
 
   var parts = {
+    p5: Array.from(document.querySelectorAll('#view-p5 .slide')),
     p1: Array.from(document.querySelectorAll('#view-p1 .slide')),
     p2: Array.from(document.querySelectorAll('#view-p2 .slide')),
     p3: Array.from(document.querySelectorAll('#view-p3 .slide')),
@@ -2471,6 +2852,7 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 
   var views = {
     home: document.getElementById('view-home'),
+    p5: document.getElementById('view-p5'),
     p1: document.getElementById('view-p1'),
     p2: document.getElementById('view-p2'),
     p3: document.getElementById('view-p3'),
@@ -2511,12 +2893,12 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
     if(hash === 'tracker' || hash === 'action' || hash === 'followup'){
       state.view = 'tracker'; render(); return;
     }
-    var m = hash.match(/^(p1|p2|p3|p4)-(\d+)$/);
+    var m = hash.match(/^(p1|p2|p3|p4|p5)-(\d+)$/);
     if(m){
       var v = m[1], i = parseInt(m[2], 10) - 1;
       if(parts[v] && parts[v][i]){ state.view = v; state.idx = i; render(); return; }
     }
-    if(hash === 'p1' || hash === 'p2' || hash === 'p3' || hash === 'p4'){
+    if(hash === 'p1' || hash === 'p2' || hash === 'p3' || hash === 'p4' || hash === 'p5'){
       state.view = hash; state.idx = last[hash] || 0; render(); return;
     }
     state.view = 'home'; render();
@@ -2531,18 +2913,20 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   function move(d){
     if(state.view === 'tracker') return;
     if(state.view === 'home'){
-      if(d > 0){ state.view = 'p1'; state.idx = 0; render(); setHash(); }
+      if(d > 0){ state.view = 'p5'; state.idx = 0; render(); setHash(); }
       return;
     }
     var slides = parts[state.view] || [];
     var n = state.idx + d;
     if(n < 0){
-      if(state.view === 'p2'){ state.view = 'p1'; state.idx = parts.p1.length - 1; }
+      if(state.view === 'p1'){ state.view = 'p5'; state.idx = parts.p5.length - 1; }
+      else if(state.view === 'p2'){ state.view = 'p1'; state.idx = parts.p1.length - 1; }
       else if(state.view === 'p3'){ state.view = 'p2'; state.idx = parts.p2.length - 1; }
       else if(state.view === 'p4'){ state.view = 'p3'; state.idx = parts.p3.length - 1; }
       else { state.view = 'home'; }
     } else if(n >= slides.length){
-      if(state.view === 'p1'){ state.view = 'p2'; state.idx = 0; }
+      if(state.view === 'p5'){ state.view = 'p1'; state.idx = 0; }
+      else if(state.view === 'p1'){ state.view = 'p2'; state.idx = 0; }
       else if(state.view === 'p2'){ state.view = 'p3'; state.idx = 0; }
       else if(state.view === 'p3'){ state.view = 'p4'; state.idx = 0; }
       else { state.view = 'tracker'; }
