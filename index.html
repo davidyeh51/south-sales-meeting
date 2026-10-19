@@ -310,6 +310,42 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   .hint{display:none}
   .ctrl button{width:34px; height:34px; font-size:.9rem}
 }
+
+/* ---------- Weekly Report & Management & Enhanced Tracker Styles ---------- */
+.report-card{
+  background:#fff; border:1px solid var(--line); border-radius:8px; padding:18px 20px;
+  display:flex; flex-direction:column; gap:12px; transition:all .15s ease;
+}
+.report-card:hover{border-color:var(--teal); box-shadow:0 6px 18px rgba(0,0,0,.04)}
+.report-header{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; border-bottom:1px solid #f0f4f8; padding-bottom:10px}
+.report-title{font-size:1.05rem; font-weight:800; color:var(--ink)}
+.report-meta{display:flex; gap:6px; flex-wrap:wrap; font-size:.74rem}
+.report-triplet{display:grid; grid-template-columns:repeat(3, 1fr); gap:12px}
+@media(max-width:860px){.report-triplet{grid-template-columns:1fr}}
+.triplet-box{border-radius:6px; padding:12px 14px; font-size:.84rem; line-height:1.48}
+.triplet-box.progress{background:#f0f8f4; border-left:3px solid #2e7d32; color:#1b5e20}
+.triplet-box.bottleneck{background:#fdf2f2; border-left:3px solid #d32f2f; color:#b71c1c}
+.triplet-box.support{background:#fef9ec; border-left:3px solid #f57c00; color:#e65100}
+.triplet-label{font-size:.74rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; margin-bottom:4px; display:flex; align-items:center; gap:4px}
+.triplet-content{font-size:.83rem; color:var(--ink)}
+
+.badge-owner{display:inline-flex; align-items:center; gap:4px; background:#e8eaf6; color:#283593; font-weight:700; padding:3px 8px; border-radius:4px; font-size:.74rem}
+.badge-deadline{display:inline-flex; align-items:center; gap:4px; background:#fff3e0; color:#e65100; font-weight:700; padding:3px 8px; border-radius:4px; font-size:.74rem}
+.badge-month{display:inline-flex; align-items:center; gap:4px; background:#e0f2f1; color:#00695c; font-weight:700; padding:3px 8px; border-radius:4px; font-size:.74rem}
+.badge-week{display:inline-flex; align-items:center; gap:4px; background:#f3e5f5; color:#7b1fa2; font-weight:700; padding:3px 8px; border-radius:4px; font-size:.74rem}
+
+.mgmt-pillar{
+  background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px;
+  display:flex; flex-direction:column; gap:10px;
+}
+.mgmt-pillar h3{font-size:1.1rem; font-weight:800; display:flex; align-items:center; gap:8px}
+.mgmt-item{background:#f8fafc; border-radius:6px; padding:12px; margin-bottom:8px; border:1px solid #edf2f7}
+.mgmt-item b{color:var(--ink); display:block; margin-bottom:3px; font-size:.88rem}
+.mgmt-item p{font-size:.82rem; color:var(--muted); margin:0}
+
+.filter-subgroup{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:8px}
+.filter-subgroup-label{font-size:.75rem; font-weight:800; color:var(--muted); min-width:70px}
+
 </style>
 </head>
 <body>
@@ -322,12 +358,14 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   </a>
   <nav class="topnav" id="topNav">
     <a href="#home" data-nav="home" class="active">首頁總覽</a>
-    <a href="#p5-1" data-nav="p5" style="color:#68369b; font-weight:700">🎯 Part 5｜2026 業務方向</a>
+    <a href="#report-1" data-nav="report" style="color:var(--teal); font-weight:700">📋 每週業務週會報告</a>
+    <a href="#mgmt-1" data-nav="mgmt" style="color:var(--green); font-weight:700">👔 主管管理重點</a>
+    <a href="#tracker" data-nav="tracker" style="color:#d85643; font-weight:700">🎯 待辦追蹤中心 (月度/每週)</a>
+    <a href="#p5-1" data-nav="p5" style="color:#68369b; font-weight:700">🚀 FY2026 業務方向</a>
     <a href="#p1-1" data-nav="p1">Part 1｜08/24 核心復盤</a>
     <a href="#p2-1" data-nav="p2">Part 2｜決策歷史演進</a>
     <a href="#p3-1" data-nav="p3">Part 3｜Pipeline 商機庫</a>
     <a href="#p4-1" data-nav="p4">Part 4｜管理制度與 SOP</a>
-    <a href="#tracker" data-nav="tracker">🎯 待辦追蹤中心</a>
   </nav>
   <div class="meta">
     <span class="live-pill">大衛雲 2.0 系統</span>
@@ -350,22 +388,65 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
       
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="v">10 億元</div>
-          <div class="l">Y2026 簽約目標（整體基準）</div>
+          <div class="v">20 億元</div>
+          <div class="l">Y2027 總簽約目標（統包4億+資產6億+AIDC10億）</div>
         </div>
         <div class="hero-stat">
-          <div class="v">5,539 萬元</div>
-          <div class="l">目前達成金額（達成率 5.5%）</div>
+          <div class="v">1.7 ~ 2 億元</div>
+          <div class="l">今年 9-10 月預計簽約 5 案＋銷售單</div>
         </div>
         <div class="hero-stat">
-          <div class="v">9,776 萬元</div>
-          <div class="l">已決標待簽約（全收達 15.3%）</div>
+          <div class="v">1.03 億元</div>
+          <div class="l">已決標待簽約（東南/正聚/建坤城鋒/和富/津谷）</div>
         </div>
         <div class="hero-stat">
           <div class="v">20 億元+</div>
           <div class="l">Pipeline 商機池總規模（40+ 專案）</div>
         </div>
       </div>
+    </div>
+
+    <div class="section-title">業務運作與決策核心 · 最新報告與管理架構</div>
+    <div class="part-cards" style="grid-template-columns:1fr 1fr; margin-bottom:14px">
+      <a href="#report-1" class="part-card featured" style="border:2px solid var(--teal); background:linear-gradient(135deg, #ffffff 0%, #f0fbfb 100%)">
+        <div>
+          <div class="pc-eyebrow" style="color:var(--teal)">週會報告矩陣 · 每週進展彙報 (5 頁)</div>
+          <h2 style="color:#0f5863; font-size:1.25rem">📋 每週業務週會報告格式：進度 ｜ 瓶頸 ｜ 協助</h2>
+          <p style="color:#335b61; font-size:.9rem">
+            <b>報告目標</b>：向主管進行當週業務進度報告，針對該案件的「進度」、「遭遇瓶頸」、「需要協助的部分」逐案彙報。<br>
+            涵蓋正聚 (400kW)、東南實業 (1,247kW)、三星螺絲 (135kW)、大順小散、軍配示範案 (150kW)、聯式電子 (300kW)、東和 AIDC (100MW)、中山微電網、潤泰綠電等全域案場。
+          </p>
+        </div>
+        <div style="margin-top:12px">
+          <div class="pc-flags">
+            <span class="flag teal">🟢 當週進度</span>
+            <span class="flag coral">🔴 遭遇瓶頸</span>
+            <span class="flag amber">🟡 需要協助</span>
+            <span class="flag green">5位業務分工</span>
+          </div>
+          <div class="pc-go" style="color:var(--teal)">進入每週業務週會報告模組 →</div>
+        </div>
+      </a>
+
+      <a href="#mgmt-1" class="part-card featured" style="border:2px solid var(--green); background:linear-gradient(135deg, #ffffff 0%, #f0f6fc 100%)">
+        <div>
+          <div class="pc-eyebrow" style="color:var(--green)">主管職責 · 決策與資源中樞 (4 頁)</div>
+          <h2 style="color:#0f3863; font-size:1.25rem">👔 主管管理重點：資源調度 ｜ 瓶頸排除 ｜ 待決策裁定</h2>
+          <p style="color:#2d4b6b; font-size:.9rem">
+            <b>管理目標</b>：主管針對業務攻堅「所需要的資源」、「瓶頸排除策略」、「需要待決策事項」進行宏觀與戰術管理。<br>
+            包含庫存 445W/695W 優先消化機制、高層陪訪攻堅、公司短期自持軍配破局國泰門檻、饋線租賃排擴建2.5年、Y2027 總目標 20 億結構拆分。
+          </p>
+        </div>
+        <div style="margin-top:12px">
+          <div class="pc-flags">
+            <span class="flag green">🛠️ 資源調度</span>
+            <span class="flag coral">🚧 瓶頸排除</span>
+            <span class="flag purple">⚖️ 待決策事項</span>
+            <span class="flag amber">攻方後盾機制</span>
+          </div>
+          <div class="pc-go" style="color:var(--green)">進入主管管理重點模組 →</div>
+        </div>
+      </a>
     </div>
 
     <div class="section-title">重要戰略核心 · 業務方向指引 (Strategy Focus)</div>
@@ -462,6 +543,16 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 
     <div class="section-title">歷次會議快速跳轉 (Meeting Archives)</div>
     <div class="meeting-history-grid">
+      <a href="#report-1" class="meeting-tile" style="background:#eaf7f9; border-color:var(--teal)">
+        <div class="m-date" style="color:var(--teal)">最新 2026-10-19 週會</div>
+        <div class="m-title" style="color:#0a5a66">10/19 週會：證據鎖價與軍配自持</div>
+        <div class="m-desc">正聚HR鎖價/防模組公差、東南11月簽主約、軍配公司自持、三星10月租約、AIDC 100MW、微網180億</div>
+      </a>
+      <a href="#mgmt-1" class="meeting-tile" style="background:#edf5fc; border-color:var(--green)">
+        <div class="m-date" style="color:var(--green)">2026-09-21 週會</div>
+        <div class="m-title" style="color:#0f3863">09/21 週會：2027目標20億與簽約立案</div>
+        <div class="m-desc">統包4億/資產6億/AIDC10億、簽約即立案交阿信、潤泰租賃排擴建2.5年、接單毛利紅線</div>
+      </a>
       <a href="#p5-1" class="meeting-tile" style="background:#f7f0fc; border-color:#c8a7ea">
         <div class="m-date" style="color:#68369b">FY2026 業務戰略</div>
         <div class="m-title" style="color:#42176e">業務方向與四大支柱</div>
@@ -496,6 +587,22 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 
     <div class="section-title">簡報全目錄 (Table of Contents)</div>
     <div class="toc">
+      <div class="card" style="border-left:4px solid var(--teal)">
+        <h3 style="color:var(--teal)">📋 每週業務週會報告 (進度 · 瓶頸 · 協助)</h3>
+        <a href="#report-1"><span class="no" style="color:var(--teal)">1</span>每週業務報告標準結構與總體指標</a>
+        <a href="#report-2"><span class="no" style="color:var(--teal)">2</span>大型光電與製造業案場 (正聚/東南/三星/大順)</a>
+        <a href="#report-3"><span class="no" style="color:var(--teal)">3</span>示範案場與特種建物 (軍配/聯式/日研/天守)</a>
+        <a href="#report-4"><span class="no" style="color:var(--teal)">4</span>算力園區、微電網與綠電買賣 (東和AIDC/中山/潤泰)</a>
+        <a href="#report-5"><span class="no" style="color:var(--teal)">5</span>業務同仁責任案場戰況與本週攻堅矩陣</a>
+      </div>
+
+      <div class="card" style="border-left:4px solid var(--green)">
+        <h3 style="color:var(--green)">👔 主管管理重點 (資源 · 排除 · 裁定)</h3>
+        <a href="#mgmt-1"><span class="no" style="color:var(--green)">1</span>業務主管核心管理三維度總綱</a>
+        <a href="#mgmt-2"><span class="no" style="color:var(--green)">2</span>管理重點 ①：四大核心資源調度機制</a>
+        <a href="#mgmt-3"><span class="no" style="color:var(--green)">3</span>管理重點 ②：實戰瓶頸精準爆破策略</a>
+        <a href="#mgmt-4"><span class="no" style="color:var(--green)">4</span>管理重點 ③：重大經營決策與制度鐵律</a>
+      </div>
       <div class="card" style="border-left:4px solid #68369b">
         <h3 style="color:#68369b">PART 5 · FY2026 業務戰略方向</h3>
         <a href="#p5-1"><span class="no" style="color:#68369b">1</span>2026 業務方向全景矩陣 (短期①–③ ｜ 中期④)</a>
@@ -552,6 +659,949 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 </section>
 
 <!-- ========================================================================= -->
+
+<!-- ========================================================================= -->
+<!-- REPORT VIEW : 每週業務週會報告格式 (進度 ｜ 瓶頸 ｜ 需要協助)                     -->
+<!-- ========================================================================= -->
+<section class="view" id="view-report">
+
+  <!-- REPORT-1 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--teal)">每週業務週會報告 · 標準框架與戰況總覽 (第 1 頁)</div>
+        <h2>每週業務進度、遭遇瓶頸與協助請求總覽</h2>
+        <p class="sub">建立標準化彙報紀律：業務端針對手頭案場逐一彙報「當週進度」、「遭遇瓶頸」、「需要協助」；主管對齊資源與決策。</p>
+      </div>
+      <div class="flags">
+        <span class="flag teal">每週進度報告</span>
+        <span class="flag green">9-10月簽約 1.7~2億</span>
+        <span class="flag coral">待簽 1.03 億</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="big-callout teal-bg">
+        <div class="label">WEEKLY SALES DISCIPLINE · 業務週會三維彙報核心目標</div>
+        <div class="answer">「業務是攻方，彙報貴在真實與求助。當週進度求落實，瓶頸障礙不隱瞞，資源協助開口要——這才是高勝率作戰的週會本質！」</div>
+        <div class="more">
+          向業務主管進行當週業務進度彙報，主要是針對該案件的「進度」、「瓶頸」，或者是「需要協助的部分」進行三維同步，確保每個卡點都有主管裁決與資源支撐。
+        </div>
+      </div>
+
+      <div class="four-col">
+        <div class="metric teal">
+          <div class="k">1.7 億元</div>
+          <div class="t">9-10月預計簽約 5 案</div>
+          <div class="sub-tag">東南、正聚、建坤城鋒、和富、津谷</div>
+        </div>
+        <div class="metric green">
+          <div class="k">2.0 億元</div>
+          <div class="t">加計銷售訂單總規模</div>
+          <div class="sub-tag">今年簽約成果集中收網</div>
+        </div>
+        <div class="metric amber">
+          <div class="k">1.03 億元</div>
+          <div class="t">已決標待簽約鎖定額</div>
+          <div class="sub-tag">全數入帳即達成既定階段目標</div>
+        </div>
+        <div class="metric purple">
+          <div class="k">15+ 案場</div>
+          <div class="t">當週重點彙報專案池</div>
+          <div class="sub-tag">覆蓋自建、租賃、微網與AIDC</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card" style="border-top:4px solid var(--teal)">
+          <h3>📋 每週業務週會報告「三維度」填報規範</h3>
+          <p>業務同仁在每週一上午 09:00 週會前，必須完成個人負責案場的三維度梳理：</p>
+          <ul class="list" style="margin-top:10px">
+            <li><b>🟢 當週進度 (Progress)</b>：本週實質進展（例如：合約用印、饋線送件、台電核定、現場複勘、結構計算完成）。非口頭寒暄，必須是可驗證里程碑。</li>
+            <li><b>🔴 遭遇瓶頸 (Bottlenecks / Blockers)</b>：目前卡住專案推進的障礙（例如：饋線需等 2.5 年、私設道路跨案爭議、舊建物合法性欠缺、模組海外正負公差風險、業主比價猶豫）。</li>
+            <li><b>🟡 需要協助/資源 (Support Needed)</b>：明確向上請求主管與跨部門支援（例如：主管陪同拜訪董事長、採購鎖定成本、法務審閱特約、工程提早現勘、公司資金短期持有）。</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--green)">
+          <h3>⚡ 主席週會高效審查原則 (Lucy & David 指導)</h3>
+          <p>因目前案件數量龐大（40+ 筆），每週會議時間緊湊，全員遵循高效彙報準則：</p>
+          <ul class="list green-dot" style="margin-top:10px">
+            <li><b>抓大放小，直奔卡點</b>：無特殊進展或按既定排程正常推展之案件，會上直接略過，不浪費全員時間唸流水帳。</li>
+            <li><b>重在「需要決策與協調」</b>：彙報重點只放在手上案件的重大更新、需要協調跨部門資源、或需要主席現場裁定之事項。</li>
+            <li><b>會議結論即待辦</b>：會上主管之裁定，立即納入「待辦事項追蹤池」，標明負責人與截止期限，下週會前追蹤檢核。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 彙報架構標準化</span>
+      <span class="pageno">1 / 5</span>
+    </div>
+  </div>
+
+  <!-- REPORT-2 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--teal)">每週業務週會報告 · 重點案場 (一) (第 2 頁)</div>
+        <h2>大型光電與製造業案場彙報：進度 · 瓶頸 · 協助</h2>
+        <p class="sub">涵蓋正聚 (400kWp)、東南實業 (1,247kWp)、三星螺絲 (135kWp)、大順小散四大製造業指標案場。</p>
+      </div>
+      <div class="flags">
+        <span class="flag teal">大型製造業案場</span>
+        <span class="flag green">Jane 責任轄區</span>
+        <span class="flag coral">成本鎖定與法規拆分</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="two-col">
+        <!-- Project 1: 正聚 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">正聚實業（七股新廠 400kWp 自建案）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Jane</span>
+                <span class="chip green">S4 已決標待簽約</span>
+                <span class="chip slate">案值：1,192 萬元</span>
+                <span class="chip amber">供電目標：2028 年</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">我方與業主雙方合約用印已完成，已協助向台電提出饋線申請；專案開挖排定 2027 年啟動，正式供電預計 2028 年實現。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">國際銅價暴漲且東南亞第三地模組進口受阻，成本持續上升；海外代工 G12R 為正負公差，不符台灣正公差標準，第三方 EL 檢測恐面臨無法驗收風險。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">請聚沙（採購部）於下次圓桌會議前鎖定 HR 相關成本；技術處確認海外模組規格公差標準，合約中嚴格排除第三方 EL 驗收要求。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: 東南實業 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">東南實業（彰化廠 805kWp ＋ 台中廠 442kWp）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Jane</span>
+                <span class="chip green">S4 董事會簽約中</span>
+                <span class="chip slate">合計案值：4,863 萬元</span>
+                <span class="chip coral">11月簽主約</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">主合約董事長已簽字，預計 11 月經董事會程序完成正式簽約；我方已先行協助送台電饋線排隊。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">彰化案因跨私設道路被台電要求拆分兩案（500kW+200kW），各自需轉高壓產生鉅額費用；附屬工程（浪板更換等）追加逾 100 萬待核算。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">本週五赴現場複勘附屬工程並核算報價；委託海林協助取得所有權人同意書向台電協商共用單一總電站與線路，避免分案轉高壓。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: 三星螺絲 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">三星螺絲（路竹/岡山 135kWp 一期）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Jane / Duck</span>
+                <span class="chip teal">S3 董事會同意</span>
+                <span class="chip slate">案值：約 540 萬元</span>
+                <span class="chip purple">10月租約/11月工程約</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">董事會已同意談好的合作條件，約定 2026 年 10 月簽租約、11 月簽工程約；三星工廠目前已動工。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">工廠無現成饋線需排隊；原本全案可做 1,300 坪，業主因景氣考量分兩期開發，第一期先做 700 多坪（約 135kWp），二期延後。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">工程團隊提前向台電申請饋線並配合現場土建預埋管路（業主極重視美觀）；大可協助對接國泰投審與租賃進度。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: 大順小散 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">大順小散（安平廠/262A棟光電專案）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Jane / 阿信團隊</span>
+                <span class="chip amber">S2 合規評估中</span>
+                <span class="chip slate">性質：既有建物整改</span>
+                <span class="chip green">團隊包辦執照</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">已完成安平廠現勘，結構評估可鋪設光電，業主合作意願高。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">該建物早於使用執照屬就地合法，但前任屋主改建屋頂超出原範圍，遭高市府要求重新請領合法執照；若業主自辦恐延宕半年以上。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">主管拍板將合規執照申辦納入光電專案由我方團隊全包處理，需工程中心建築師與行政資源立即進場辦理，搶在一個月內送件。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 重點製造業案場彙報</span>
+      <span class="pageno">2 / 5</span>
+    </div>
+  </div>
+
+  <!-- REPORT-3 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--teal)">每週業務週會報告 · 重點案場 (二) (第 3 頁)</div>
+        <h2>示範案場與特種建物彙報：進度 · 瓶頸 · 協助</h2>
+        <p class="sub">涵蓋軍配示範案 (150kW)、聯式電子 (300kW)、日研光電 (499~4000kW)、天守實業舊廠收購四大案場。</p>
+      </div>
+      <div class="flags">
+        <span class="flag teal">示範案與特種建物</span>
+        <span class="flag purple">公司自有自持</span>
+        <span class="flag coral">半導體酸廠與收購</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="two-col">
+        <!-- Project 1: 軍配示範案 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">軍配示範案場（安平工業區 150kW 圓形屋頂）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Jane / Duck / 大衛</span>
+                <span class="chip purple">S2 公司自行短期持有</span>
+                <span class="chip slate">投入：500~600 萬元</span>
+                <span class="chip green">自有示範案標竿</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">台中展引進客戶，建議維持原圓形屋頂省去改三型雜照時間，容量約 150kW；2026 完成申請，預計 2027 進場施工。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">國泰剛性收購門檻為 ≥200kW（本案 150kW 遭拒）；中租可接小案但要求保發 2 年換新產品試用權；目前產權過戶中。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">葉大衛拍板由公司自行短期持有投入 500~600 萬作為南區自有示範案場；需財務部安排自持出資流程，業務部完成租賃簽約。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: 聯式電子 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">聯式電子（300kW 半導體酸類廠房）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Vanessa / Duck</span>
+                <span class="chip amber">S1 防護評估中</span>
+                <span class="chip slate">案值：約 1,350 萬元</span>
+                <span class="chip slate">預算計入明年</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">規模約 300kW，原廠為半導體酸類工廠；已請原廠確認 PD Inverter 在該酸性環境中具備足夠防護效果；採購正詢價鋼構中。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">原鋼構僅 12-13 米外框，中間需新增大跨距立柱，鋼構費用高昂嚴重侵蝕全案毛利；本週需提交預算計入明年。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">業務傾向不承接全案鋼構，建議改由業主自行出資完成鋼構立柱、我方承攬光電統包；請大衛檢視細節後拍板承接架構。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: 日研光電 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">日研光電（499kW ~ 4,000kW 方案送審案）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Duck</span>
+                <span class="chip teal">S1 方案審查中</span>
+                <span class="chip slate">審查期：6 週</span>
+                <span class="chip coral">方塊鋪設減容</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">設計方案已正式送出，對方需 6 週時間進行內部多部門討論；提供 499kW 至 4,000kW 彈性配置選項。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">受保險公司規定要求必須採方塊鋪設，比原規劃少約 1,000kW；日研近兩年營收較差有替代品衝擊，自用光電出資意願較低。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">協助調整為「投資方租賃屋頂」模式以消除業主出資顧慮，並同步測算 499kW 保底方案之投報率。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: 天守實業 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">天守實業（屏東農科園區 舊廠光電收購案）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Lucy</span>
+                <span class="chip green">S2 併購排程中</span>
+                <span class="chip slate">模式：既有案場收購</span>
+                <span class="chip purple">12月中旬交割</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">業主原新建廠房貸款受阻，轉為收購農科既有舊廠房；舊廠屋頂已具備既有光電設施，團隊正洽談光電收購整改。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">目前正處於工廠產權交割過戶階段，預計 12 月中旬完成工廠交割，交割前無法進行正式合約簽署。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">投資評估小組先行盤點舊廠發電歷史數據與設備衰減率，交割當日立即遞交收購協議，實現案場快速變現。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 特種案場與示範專案</span>
+      <span class="pageno">3 / 5</span>
+    </div>
+  </div>
+
+  <!-- REPORT-4 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--teal)">每週業務週會報告 · 重點案場 (三) (第 4 頁)</div>
+        <h2>算力園區、微電網與綠電買賣：進度 · 瓶頸 · 協助</h2>
+        <p class="sub">涵蓋東和紡織 AIDC (100MW)、中山大學微電網/物聯網 (80頁專案)、潤泰精密綠電買賣三大前瞻案場。</p>
+      </div>
+      <div class="flags">
+        <span class="flag coral">AIDC 100MW</span>
+        <span class="flag teal">微電網 180 億</span>
+        <span class="flag green">綠電買賣協商</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="three-col">
+        <!-- Project 1: 東和 AIDC -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">東和紡織 AIDC 算力園區（100MW 旗艦案）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Duck / Lucy / 大衛</span>
+                <span class="chip coral">S1 融資千億級</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet" style="grid-template-columns:1fr">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">Toby 返台對接，OpenClaw 擬在東和紡織地塊開發 100MW AIDC，台灣資金方承擔 1000~1500 億融資需求；具天然氣發電、台電逆送「以光帶電」與中華電信光纖海纜優勢。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">東和紡織廠方明確拒絕合作光電，亦不願出租土地，傳統開發模式無推進空間。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">葉大衛再晤 Toby，評估改採「廠房內置貨櫃式資料中心」免拆廠方案重新提案；核心在於鎖定算力變現者。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: 中山大學微網 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">中山大學物聯網與微電網（80頁專案）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Duck / Julia / Lucy</span>
+                <span class="chip teal">S2 完成度 90%</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet" style="grid-template-columns:1fr">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">專案企劃完成 9 成共 80 多頁（版本 7），看完前四章完成排版；合作老師 8 萬元繪電線條交付中；教育部四年 180 億微電網市場開跑。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">中山案約 7 成問題與 DNS 相關；王老師團隊偏好小案轉換慢；需防範招標文件苛刻罰則。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">大衛確立「台大能源+我方 vs 其他+西門子」競標陣容；厲總指示若含「無限制處罰」則堅決棄標。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: 潤泰綠電 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div>
+              <div class="report-title">潤泰精密綠電買賣（里港水泥廠）</div>
+              <div class="report-meta" style="margin-top:4px">
+                <span class="badge-owner">👤 Vanessa / Jane / 大衛</span>
+                <span class="chip green">S2 綠電價格協商</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-triplet" style="grid-template-columns:1fr">
+            <div class="triplet-box progress">
+              <div class="triplet-label">🟢 當週進度</div>
+              <div class="triplet-content">三期屋頂光伏為剛需，業主承諾三年必建；提出兩方案：方案一簽三年無饋線失效避免輪押；方案二掛建控名下與黑石簽綠電買賣契約。</div>
+            </div>
+            <div class="triplet-box bottleneck">
+              <div class="triplet-label">🔴 遭遇瓶頸</div>
+              <div class="triplet-content">無可用饋線採「租賃排擴建 2.5 年」；綠電回購初報 2.5 元/度，對方回饋 2.2 元/度，存在 0.3 元價差。</div>
+            </div>
+            <div class="triplet-box support">
+              <div class="triplet-label">🟡 需要協助</div>
+              <div class="triplet-content">大衛參與綠電回購價格最終協商，爭取 2.3~2.4 元折中點，確保買賣契約具備投資吸引力。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 前瞻巨案與綠電交易</span>
+      <span class="pageno">4 / 5</span>
+    </div>
+  </div>
+
+  <!-- REPORT-5 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--teal)">每週業務週會報告 · 個人戰線 (第 5 頁)</div>
+        <h2>業務同仁責任案場戰況與本週攻堅矩陣</h2>
+        <p class="sub">盤點 Jane、Vanessa、Duck、Lucy、Julia 五位同仁當週負責案場進展、關鍵阻礙與本週攻堅任務。</p>
+      </div>
+      <div class="flags">
+        <span class="flag teal">全員戰線覆蓋</span>
+        <span class="flag green">逐人任務對齊</span>
+        <span class="flag coral">週會閉環管理</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:110px">業務負責人</th>
+              <th style="width:180px">核心負責案場</th>
+              <th>🟢 當週進度與里程碑</th>
+              <th>🔴 關鍵遭遇瓶頸</th>
+              <th>🟡 本週攻堅任務與需要協助</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Jane<br>(蔡宛真)</b></td>
+              <td>
+                <span class="chip green">東南實業</span> <span class="chip slate">1,247kW</span><br>
+                <span class="chip teal">正聚七股</span> <span class="chip slate">400kW</span><br>
+                <span class="chip purple">三星螺絲</span> <span class="chip slate">135kW</span><br>
+                <span class="chip amber">大順小散</span> <span class="chip slate">安平廠</span><br>
+                <span class="chip slate">翔展精密</span> <span class="chip slate">600kW</span>
+              </td>
+              <td>
+                東南主約董座已簽等11月董事會；正聚用印完送台電排2028供電；三星董事會同意10月租約/11月工程約；翔展容量確定下週招標。
+              </td>
+              <td>
+                東南跨私設道路分案爭議＋附屬工程超100萬；正聚銅價大漲與模組海外公差；三星無饋線；大順改建超標需補照；翔展65年前建物合法性。
+              </td>
+              <td>
+                <b>週五複勘東南附屬工程並報價</b>；海林協商台電合一備案；聚沙鎖定正聚HR成本；團隊包辦大順補照；阿信團隊配合三星預埋管路。
+              </td>
+            </tr>
+            <tr>
+              <td><b>Vanessa<br>(陳慧盈)</b></td>
+              <td>
+                <span class="chip green">城鋒新建</span> <span class="chip slate">208kW</span><br>
+                <span class="chip teal">津谷食品</span> <span class="chip slate">849kW</span><br>
+                <span class="chip purple">和富工業</span> <span class="chip slate">示範案</span><br>
+                <span class="chip coral">潤泰精密</span> <span class="chip slate">綠電買賣</span><br>
+                <span class="chip slate">聯式電子</span> <span class="chip slate">300kW</span>
+              </td>
+              <td>
+                城鋒租約大致無虞；津谷立案簽字送出等2027/2進場；和富主約談妥收20萬定金、3頁協議送審國泰；潤泰綠電2.2與2.5元協商中。
+              </td>
+              <td>
+                城鋒新經營團隊比價（我方10% vs 競品30%）；津谷業主自建4.55米棚架進度；潤泰無饋線需排擴建2.5年；聯式酸廠鋼構立柱費用高。
+              </td>
+              <td>
+                <b>約城鋒原董座會面破除30%比價</b>；追蹤津谷棚架工期；推進和富國泰投審會；大衛參與潤泰綠電回購協商；聯式建議業主自建立柱。
+              </td>
+            </tr>
+            <tr>
+              <td><b>Duck<br>(翁于婷)</b></td>
+              <td>
+                <span class="chip green">奇景光電</span> <span class="chip slate">1,865萬</span><br>
+                <span class="chip teal">中山微網</span> <span class="chip slate">80頁專案</span><br>
+                <span class="chip coral">東和AIDC</span> <span class="chip slate">100MW</span><br>
+                <span class="chip purple">日研光電</span> <span class="chip slate">4000kW</span><br>
+                <span class="chip amber">辰亞台中港</span> <span class="chip slate">地面型</span>
+              </td>
+              <td>
+                奇景 PO 確認中標復盤完成；中山物聯網完成 9 成 V7 排版；日研 499~4000kW 設計送審；辰亞手握 2-3 億資金下週三洽談。
+              </td>
+              <td>
+                東和廠方明確拒絕合作光電或租地；日研方塊鋪設減容 1000kW 且自用意願低；中山物聯網電線條等待交付。
+              </td>
+              <td>
+                <b>週三與辰亞洽談台中港 BOS 總包代工</b>；大衛再晤 Toby 評估貨櫃免拆廠方案；完成中山 80 頁排版與目錄；日研測算 499kW 租賃模式。
+              </td>
+            </tr>
+            <tr>
+              <td><b>Lucy<br>(陳詩茹)</b></td>
+              <td>
+                <span class="chip green">特嘉食品</span> <span class="chip slate">農科二期</span><br>
+                <span class="chip teal">天守實業</span> <span class="chip slate">舊廠收購</span><br>
+                <span class="chip purple">桃苗中壢</span> <span class="chip slate">436kW</span><br>
+                <span class="chip slate">環泥阿蓮</span> <span class="chip slate">表後儲能</span><br>
+                <span class="chip amber">國泰整新</span> <span class="chip slate">12.7MW</span>
+              </td>
+              <td>
+                特嘉低壓併網澄清函發送中等使照；天守轉收購舊廠屋頂光電；桃苗將建築師變更費納入統包；環泥洽三家報價釐清儲能規格。
+              </td>
+              <td>
+                天守等待 12 月中工廠產權交割；國泰整新 95% 帶保發違約條款篩選緩慢；業務目標表數字未對齊 Pipeline。
+              </td>
+              <td>
+                <b>交割前盤點天守舊廠光電發電數據</b>；核對業務目標表數字對齊 Pipeline；週三赴桃苗洽談特嘉；跟進國泰更新細部需求表單。
+              </td>
+            </tr>
+            <tr>
+              <td><b>Julia<br>(張淳雅)</b></td>
+              <td>
+                <span class="chip teal">嘉義大學</span> <span class="chip slate">微電網</span><br>
+                <span class="chip purple">高科大</span> <span class="chip slate">微電網</span><br>
+                <span class="chip green">宜蘭大學</span> <span class="chip slate">微電網</span><br>
+                <span class="chip slate">公部門專案</span>
+              </td>
+              <td>
+                嘉義大學發送技術詢問信，正與設計方討論現場洽談；高科大準備詳細洽談資料中；教育部四年 180 億微電網市場全面展開。
+              </td>
+              <td>
+                標案等經費核定與 PCM 確認現場勘查；公部門審查流程繁瑣且各校 DNS 軟硬體規範歧異。
+              </td>
+              <td>
+                <b>與設計方討論嘉義大學微電網現場拜訪時間</b>；完善高科大提案簡報；協同中山微電網聯合體技術規範整理。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 個人責任矩陣</span>
+      <span class="pageno">5 / 5</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ========================================================================= -->
+<!-- MGMT VIEW : 主管管理重點 (所需要的資源 ｜ 遭遇瓶頸排除 ｜ 待決策與裁定)       -->
+<!-- ========================================================================= -->
+<section class="view" id="view-mgmt">
+
+  <!-- MGMT-1 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--green)">主管管理重點 · 三維架構總綱 (第 1 頁)</div>
+        <h2>業務主管核心管理三維度：資源 · 排除 · 裁定</h2>
+        <p class="sub">主管不只是督導進度，更是資源調配者、卡點爆破者與重大決策裁定者。全面貫徹「業務轉型攻方，後端風險主管承擔」原則。</p>
+      </div>
+      <div class="flags">
+        <span class="flag green">主管管理綱領</span>
+        <span class="flag teal">攻方後盾機制</span>
+        <span class="flag coral">重大決策裁定</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="big-callout">
+        <div class="label">LEADERSHIP MANDATE · 主管管理核心理念</div>
+        <div class="answer">「業務向前衝鋒拿單，主管在後調度資源、拆除炸彈、一錘定音！讓每一個卡住的案場，在週會上都能找到明確的解法與負責人。」</div>
+        <div class="more">
+          管理重點主要針對「所需要的資源」、「遭遇的瓶頸」、「需要待決策的部分」進行全局管理，破除部門藩籬，保障 2026 簽約 2 億元與 2027 衝刺 20 億元之戰略達成。
+        </div>
+      </div>
+
+      <div class="three-col">
+        <div class="mgmt-pillar" style="border-top:4px solid var(--green)">
+          <h3 style="color:var(--green)">🛠️ ① 所需要的資源調度</h3>
+          <p style="font-size:.85rem; color:var(--muted)">動員跨部門資源，成為一線業務的最強軍火庫：</p>
+          <div class="mgmt-item">
+            <b>庫存模組優先消化機制</b>
+            <p>庫存 445W 約 3000 片、695W 約 4000 片，新案強制優先導入，釋放千萬元資金。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>高階主管陪訪與商務攻堅</b>
+            <p>曹協親赴上海拜訪馬東二代、David 陪訪城鋒原董、親晤 Toby 破除 AIDC 僵局。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>多元金融與資金媒合</b>
+            <p>突破國泰單一渠道，引入中租保發、百億台資 AIDC、黑石綠電買賣、辰亞代工資金。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>工程阿信團隊立即立案</b>
+            <p>既有建物簽約 3 日內打星立案移交工程，杜絕延宕 2-3 個月造成進場黑洞。</p>
+          </div>
+        </div>
+
+        <div class="mgmt-pillar" style="border-top:4px solid var(--coral)">
+          <h3 style="color:var(--coral)">🚧 ② 遭遇瓶頸精準排除</h3>
+          <p style="font-size:.85rem; color:var(--muted)">以制度與戰術創新，爆破常規卡點阻礙：</p>
+          <div class="mgmt-item">
+            <b>饋線荒：「租賃排擴建 2.5 年」</b>
+            <p>無即時饋線案場先簽租約鎖定，以租賃排台電擴建隊伍，以時間換空間。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>示範案門檻：「公司短期持有」</b>
+            <p>國泰不收 <200kW 小案，大衛拍板由公司自持 500-600 萬，打造自有示範案場。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>違建超標：「團隊包辦合規申請」</b>
+            <p>大順小散改建超標，進能服團隊包辦重辦執照，免去業主自辦延宕半年。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>公差風險防禦：「排除第三方 EL」</b>
+            <p>海外模組正負公差風險高，合約規格預先排除第三方 EL 強制檢測防無法驗收。</p>
+          </div>
+        </div>
+
+        <div class="mgmt-pillar" style="border-top:4px solid #68369b">
+          <h3 style="color:#68369b">⚖️ ③ 待決策與裁定事項</h3>
+          <p style="font-size:.85rem; color:var(--muted)">確立接單標準與邊界，指引團隊前進方向：</p>
+          <div class="mgmt-item">
+            <b>Y2027 總目標 20 億結構性拆分</b>
+            <p>統包 4 億 ＋ 資產管理 6 億 ＋ AIDC 開發 10 億，明確業務責任配額。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>接單毛利紅線與門檻</b>
+            <p><300kW 初報 20% 最低 15%；≥300kW 守 15%；微電網投標價 ≥3000 元/kW。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>招標文件避險鐵律</b>
+            <p>中山微電網等標案若具「無限制風險處罰條款」，進能服絕對不投標。</p>
+          </div>
+          <div class="mgmt-item">
+            <b>簽約立案交接鐵律</b>
+            <p>既有建物簽約完成 3 日內必須完成 ERP 打星交接，列入業務月度考核。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 主管管理架構總綱</span>
+      <span class="pageno">1 / 4</span>
+    </div>
+  </div>
+
+  <!-- MGMT-2 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--green)">主管管理重點 · 資源調度 (第 2 頁)</div>
+        <h2>四大核心資源調度機制：庫存、陪訪、資金與工程</h2>
+        <p class="sub">建立制度化資源調配通道，杜絕資源內耗與等待，全力支援一線業務攻堅。</p>
+      </div>
+      <div class="flags">
+        <span class="flag green">庫存消化機制</span>
+        <span class="flag teal">主管親訪攻堅</span>
+        <span class="flag purple">多元金融媒合</span>
+        <span class="flag coral">工程立案交接</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="two-col">
+        <div class="card" style="border-top:4px solid var(--green)">
+          <h3>📦 機制一：庫存模組優先消化規定</h3>
+          <p><b>現況盤點</b>：倉庫庫存 445W 規格模組約剩 3,000 片、695W 規格模組約剩 4,000 片，積壓流動資金逾千萬元。</p>
+          <ul class="list green-dot" style="margin-top:8px">
+            <li><b>新案強制評估導入</b>：城鋒、和富、三星螺絲、大順等即將簽約動工之案件，設計端必須優先採用自有庫存品排布。</li>
+            <li><b>採購認證加速送審</b>：採購處已於 8-9 月啟動 695W 模組認證送審，掃除施工驗收阻礙。</li>
+            <li><b>激勵措施</b>：業務成功銷售庫存品者，給予專案業績額外加成與獎勵。</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--teal)">
+          <h3>🤝 機制二：高階主管動態陪訪攻堅</h3>
+          <p><b>策略原則</b>：高層陪訪不是例行公事，而是鎖定關鍵決策人、異地攻堅或競爭比價時的決定性打擊武器。</p>
+          <ul class="list" style="margin-top:8px">
+            <li><b>馬東倉庫案</b>：業主二代在上海，由<b>曹協</b>親自帶隊赴上海拜訪，直接對接家族決策核心。</li>
+            <li><b>城鋒科技案</b>：面對競品 30% 租金攪局，由<b>葉大衛</b>陪同拜訪原團隊董事長，以工程實力與長期信譽穩固合約。</li>
+            <li><b>東和 AIDC 案</b>：面對廠方拒絕合作，由<b>葉大衛</b>再晤 Toby，以貨櫃式創新方案探尋重啟破局點。</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid #68369b">
+          <h3>💰 機制三：多元金融與投資人對接網絡</h3>
+          <p><b>策略原則</b>：跳脫「依賴單一國泰」思維，建立多層次資產與資金對接網絡，案無分大小皆有出路。</p>
+          <ul class="list purple-dot" style="margin-top:8px">
+            <li><b>小容量示範案 (<200kW)</b>：國泰不收，改由<b>公司自行短期持有</b>（投入500-600萬，如軍配案）或轉<b>中租保發 2 年</b>。</li>
+            <li><b>百億級大型 AIDC (100MW)</b>：對接<b>富邦能源</b>及百億級台灣大型算力基金，承擔千億元融資。</li>
+            <li><b>綠電交易買賣</b>：與<b>黑石 (Blackstone)</b> 對接綠電買賣契約，為建控名下案場創造溢價現金流。</li>
+            <li><b>BOS 代工總包</b>：對接手握 2-3 億資金的<b>辰亞</b>，我方專注 BOS 總包工程獲取穩健利潤。</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--coral)">
+          <h3>⚙️ 機制四：工程阿信團隊簽約即立案機制</h3>
+          <p><b>策略原則</b>：根絕「簽約後放兩三個月沒人管、半年後才進場」的內部斷點黑洞，打通業務到工程的傳送帶。</p>
+          <ul class="list coral-dot" style="margin-top:8px">
+            <li><b>簽約完成 3 日內打星立案</b>：凡簽約完成之完整既有建物案場，業務負責人必須於 3 日內在系統立案。</li>
+            <li><b>阿信團隊立即排程 PM</b>：立案當日轉入工程中心，由阿信團隊指定專案經理 (PM)，啟動結構複勘與施工排程。</li>
+            <li><b>跨部門月度稽核</b>：每週一週會審查立案進度，未按時立案移交者納入 KPI 懲處扣分。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 資源調配機制</span>
+      <span class="pageno">2 / 4</span>
+    </div>
+  </div>
+
+  <!-- MGMT-3 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--green)">主管管理重點 · 瓶頸排除 (第 3 頁)</div>
+        <h2>實戰瓶頸精準爆破策略：饋線、門檻、法規與公差</h2>
+        <p class="sub">針對第一線遭遇的非典型障礙，主管層直接給出破局打法，化阻力為前進動力。</p>
+      </div>
+      <div class="flags">
+        <span class="flag coral">實戰破局策略</span>
+        <span class="flag amber">饋線排擴建</span>
+        <span class="flag green">公司短期持有</span>
+        <span class="flag teal">包辦合規申請</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="two-col">
+        <div class="card" style="border-left:4px solid var(--amber)">
+          <div class="chip amber" style="margin-bottom:6px">瓶頸破局 ①</div>
+          <h3>饋線荒解法：「租賃排擴建 2.5 年」先卡位</h3>
+          <p><b>困境</b>：南區多數優質工業區（如屏東里港潤泰精密、嘉義馬稠後）面臨台電無即時可用饋線，業務易因饋線卡關放棄簽約。</p>
+          <div class="formula" style="margin-top:8px">
+            破局打法：租賃契約先簽 ➔ 以租賃名義排入台電擴建隊伍 ➔ 約定 2.5 年建設期
+          </div>
+          <p style="margin-top:8px; font-size:.84rem; color:var(--muted)">
+            <b>實踐成果</b>：潤泰精密第三期屋頂光伏依此模式成功推進，先鎖定案場獨家開發權，避免競爭對手趁虛而入；馬稠後葉診所亦以類似邏輯搶在三星案後完成排隊登記。
+          </p>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--green)">
+          <div class="chip green" style="margin-bottom:6px">瓶頸破局 ②</div>
+          <h3>門檻阻礙解法：「公司短期自持 500-600 萬」</h3>
+          <p><b>困境</b>：國泰電業等主力收購方設定剛性門檻（不收 <200kW 小案），導致如軍配 150kW 優質圓形屋頂案場因規模小無投資人承接。</p>
+          <div class="formula" style="margin-top:8px">
+            破局打法：大衛拍板由公司自有資金出資 500-600 萬自建自持 ➔ 轉化為南區示範案
+          </div>
+          <p style="margin-top:8px; font-size:.84rem; color:var(--muted)">
+            <b>戰略價值</b>：打破「沒投資人買就不做」的被動局面，既保留了專案毛利，又為公司打造一個隨時可向潛在客戶展示的自有示範場域，方便後續推廣。
+          </p>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--teal)">
+          <div class="chip teal" style="margin-bottom:6px">瓶頸破局 ③</div>
+          <h3>違章超標解法：「團隊包辦合法執照申辦」</h3>
+          <p><b>困境</b>：大順小散前任屋主改建屋頂超出原就地合法設置範圍，高市府要求重辦執照；若交由業主自行申辦，業主缺乏經驗且動力不足，往往延宕半年以上甚至流案。</p>
+          <div class="formula" style="margin-top:8px">
+            破局打法：進能服團隊將合法執照申請納入光電專案 ➔ 建築師包辦申辦 ➔ 快速進場
+          </div>
+          <p style="margin-top:8px; font-size:.84rem; color:var(--muted)">
+            <b>實踐成果</b>：團隊主動承擔簡化流程，將潛在半年延宕縮短為一個月內完成送件，以極低邊際成本換取專案簽約進場之決定性進展。
+          </p>
+        </div>
+
+        <div class="card" style="border-left:4px solid var(--coral)">
+          <div class="chip coral" style="margin-bottom:6px">瓶頸破局 ④</div>
+          <h3>公差檢測風險：「合約嚴禁第三方 EL 條款」</h3>
+          <p><b>困境</b>：台灣已無能力改造 G12R 電池，海外代工貼牌模組普遍為「正負公差」，不符合台灣市場要求的「正公差」；若客戶合約約定第三方 EL 檢測，驗收必然無法過關。</p>
+          <div class="formula" style="margin-top:8px">
+            破局打法：技術處預先界定公差標準 ➔ 業務與法務在合約中嚴格排除第三方 EL 強制檢測
+          </div>
+          <p style="margin-top:8px; font-size:.84rem; color:var(--muted)">
+            <b>風控保障</b>：在正聚等大型案場商務談判階段即完成條款防護，防止施工完成後陷入驗收僵局與呆帳風險。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 瓶頸爆破策略</span>
+      <span class="pageno">3 / 4</span>
+    </div>
+  </div>
+
+  <!-- MGMT-4 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div>
+        <div class="eyebrow" style="color:var(--green)">主管管理重點 · 決策裁定 (第 4 頁)</div>
+        <h2>重大經營決策與制度鐵律裁定</h2>
+        <p class="sub">確立 Y2027 總目標 20 億結構、接單毛利底線、標案避險原則與簽約立案時限。</p>
+      </div>
+      <div class="flags">
+        <span class="flag green">Y2027 總目標 20 億</span>
+        <span class="flag coral">毛利紅線 15%/20%</span>
+        <span class="flag teal">無限制罰則不投</span>
+        <span class="flag purple">立案交接鐵律</span>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="two-col">
+        <div class="card" style="border-top:4px solid #68369b">
+          <h3>🎯 決策一：Y2027 年度總目標 20 億元結構拆分</h3>
+          <p>2026/09/21 週會正式拍板，2026-2027 年度總簽約目標定為 <b>20 億元</b>，劃分為三大戰略板塊：</p>
+          <table style="margin-top:8px; font-size:.82rem">
+            <thead>
+              <tr><th>戰略板塊</th><th>簽約目標</th><th>業務核心範疇</th><th>主要負責人</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>統包工程</b></td>
+                <td class="num"><b>4 億元</b></td>
+                <td>光電 EPC 自建、高校微電網、調後儲能自建</td>
+                <td>Jane, Julia</td>
+              </tr>
+              <tr>
+                <td><b>資產管理</b></td>
+                <td class="num"><b>6 億元</b></td>
+                <td>屋頂出租租賃、第三方投資承攬、案場收購整改</td>
+                <td>Vanessa, Duck</td>
+              </tr>
+              <tr>
+                <td><b>AIDC 開發</b></td>
+                <td class="num"><b>10 億元</b></td>
+                <td>資料中心園區電力工程配套、算力綠電供給</td>
+                <td>Duck, Lucy, 大衛</td>
+              </tr>
+              <tr style="background:#f5f0fb; font-weight:800">
+                <td><b>合計</b></td>
+                <td class="num"><b>20 億元</b></td>
+                <td>全方位跨入電力交付與算力基礎建設</td>
+                <td>南區全員</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--coral)">
+          <h3>🚫 決策二：接單毛利紅線與邊際底線</h3>
+          <p>為避免業務端陷入惡性價格戰，管理層明確訂定各類專案報價與毛利底線：</p>
+          <ul class="list coral-dot" style="margin-top:8px">
+            <li><b>一般太陽能光伏案 (&lt;300kW)</b>：初次報價一律報 <b>20%</b> 毛利，經談判折讓最低不得低於 <b>15%</b>。</li>
+            <li><b>大型光伏案場 (≥300kW)</b>：初次報價可報 18-20%，最終底線嚴守 <b>15%</b> 毛利紅線。</li>
+            <li><b>微電網專案</b>：因系統複雜度極高、易產生試錯與軟體整合成本，投標單價必須鎖定在 <b>3,000 元/kW 以上</b>，嚴禁低價搶標。</li>
+            <li><b>儲能專案</b>：併入供電業務推進；新世界儲能等高風險項目暫緩。</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--teal)">
+          <h3>⚖️ 決策三：公部門招標避險鐵律（厲總指示）</h3>
+          <p>面對教育部未來四年 180 億微電網與大學標案，確立嚴格風險過濾標準：</p>
+          <div class="warning-box" style="margin-top:8px">
+            <b>裁定原則</b>：凡投標契約條款中包含「無限制風險處罰條款」、「連帶無限損害賠償」者，進金生能源服務一律堅決不予投標！
+          </div>
+          <p style="margin-top:8px; font-size:.82rem; color:var(--muted)">
+            團隊只承接權責對等、具備合理罰則上限之優質標案；中山大學等標案依此原則推進。
+          </p>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--green)">
+          <h3>📜 決策四：既有建物立案移交「打星鐵律」</h3>
+          <p>為確保業績入帳與工程排程完全閉環，確立內部營運制度鐵律：</p>
+          <ul class="list green-dot" style="margin-top:8px">
+            <li><b>簽約後 3 日內系統打星立案</b>：合約簽字完成後，負責業務必須於 3 日內完成 ERP 系統打星立案。</li>
+            <li><b>無縫交接阿信團隊</b>：立案即刻觸發工程中心阿信團隊排定 PM，安排圖說審查與進場現勘。</li>
+            <li><b>違者納入考核扣分</b>：若因業務未及時立案導致案場擱置超過兩週，追究當事人管理責任。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>南區業務週會知識庫 · 重大經營決策</span>
+      <span class="pageno">4 / 4</span>
+    </div>
+  </div>
+
+</section>
+
 <!-- PART 5 : FY2026 業務戰略方向 (FY2026_業務方向.pptx)                       -->
 <!-- ========================================================================= -->
 <section class="view" id="view-p5">
@@ -2778,45 +3828,100 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   <div class="tracker-page">
     <div class="tracker-hero">
       <h1>🎯 主席待辦行動池與 Follow-up 追蹤中心</h1>
-      <p>完整收錄南區業務週會知識庫 40+ 項跨部門行動、個案談判卡點與主席裁定。支援動態篩選、即時勾選與報表匯出。</p>
+      <p>依照「每個月的每週進展報告」結構化劃分，嚴格列明各事項之「負責人 (Owner)」與「截止期限 (Deadline)」，讓每一次業務週會都能精準 follow up 推進與落實。</p>
     </div>
 
-    <div class="tracker-toolbar">
-      <div class="filter-pills" id="trackerFilters">
-        <button class="filter-pill active" onclick="setTrackerFilter('all', this)">全部待辦 (<span id="cntAll">0</span>)</button>
-        <button class="filter-pill" onclick="setTrackerFilter('pending', this)">待處理 (<span id="cntPending">0</span>)</button>
-        <button class="filter-pill" onclick="setTrackerFilter('high', this)">🔥 高優先級 (<span id="cntHigh">0</span>)</button>
-        <button class="filter-pill" onclick="setTrackerFilter('done', this)">✓ 已完成/已裁定 (<span id="cntDone">0</span>)</button>
-        <button class="filter-pill" onclick="setTrackerFilter('#005', this)">#005 (8/24)</button>
-        <button class="filter-pill" onclick="setTrackerFilter('#004', this)">#004 (8/17)</button>
+    <!-- Enhanced Multi-level Toolbar -->
+    <div class="tracker-toolbar" style="flex-direction:column; align-items:stretch; gap:10px">
+      <!-- Row 1: Month Tabs & Search & Export -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px">
+        <div class="filter-pills" id="monthFilters">
+          <button class="filter-pill active" onclick="setTrackerMonth('all', this)">全部月份 (<span id="cntAll">0</span>)</button>
+          <button class="filter-pill" onclick="setTrackerMonth('2026-10', this)">📅 2026年10月進展 (<span id="cntOct">0</span>)</button>
+          <button class="filter-pill" onclick="setTrackerMonth('2026-09', this)">📅 2026年9月進展 (<span id="cntSep">0</span>)</button>
+          <button class="filter-pill" onclick="setTrackerMonth('2026-08', this)">📅 2026年8月進展 (<span id="cntAug">0</span>)</button>
+          <button class="filter-pill" onclick="setTrackerMonth('2026-07', this)">📅 2026年7月及歷史 (<span id="cntJul">0</span>)</button>
+        </div>
+
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap">
+          <input type="text" id="trackerSearch" class="search-input" placeholder="🔍 搜尋案名、負責人或關鍵字..." oninput="renderTracker()">
+          <button class="btn ghost sm" onclick="exportTrackerText()">📄 匯出月度/每週追蹤報告</button>
+          <button class="btn primary sm" onclick="copyTrackerText()">📋 複製待辦清單</button>
+        </div>
       </div>
 
-      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap">
-        <input type="text" id="trackerSearch" class="search-input" placeholder="🔍 搜尋專案或關鍵字 (如: 津谷, 奇景, 台糖)..." oninput="renderTracker()">
-        <button class="btn ghost sm" onclick="exportTrackerText()">📄 匯出追蹤報告</button>
-        <button class="btn primary sm" onclick="copyTrackerText()">📋 複製待辦清單</button>
+      <!-- Row 2: Sub-filters (Week, Owner, Priority, Status) -->
+      <div style="border-top:1px solid #f0f4f8; padding-top:8px; display:flex; flex-direction:column; gap:6px">
+        <!-- Week Filter -->
+        <div class="filter-subgroup">
+          <span class="filter-subgroup-label">🗓️ 週會日期：</span>
+          <div class="filter-pills" id="weekFilters">
+            <button class="filter-pill active" onclick="setTrackerWeek('all', this)">全部週會</button>
+            <button class="filter-pill" onclick="setTrackerWeek('2026-10-19', this)">10/19 週會 (最新)</button>
+            <button class="filter-pill" onclick="setTrackerWeek('2026-09-21', this)">09/21 週會</button>
+            <button class="filter-pill" onclick="setTrackerWeek('2026-08-24', this)">08/24 週會</button>
+            <button class="filter-pill" onclick="setTrackerWeek('2026-08-17', this)">08/17 週會</button>
+            <button class="filter-pill" onclick="setTrackerWeek('2026-08-10', this)">08/10 週會</button>
+            <button class="filter-pill" onclick="setTrackerWeek('2026-08-03', this)">08/03 週會</button>
+            <button class="filter-pill" onclick="setTrackerWeek('2026-07-27', this)">07/27 週會</button>
+          </div>
+        </div>
+
+        <!-- Owner Filter -->
+        <div class="filter-subgroup">
+          <span class="filter-subgroup-label">👤 負責人：</span>
+          <div class="filter-pills" id="ownerFilters">
+            <button class="filter-pill active" onclick="setTrackerOwner('all', this)">全部同仁</button>
+            <button class="filter-pill" onclick="setTrackerOwner('David', this)">葉大衛 (David)</button>
+            <button class="filter-pill" onclick="setTrackerOwner('Jane', this)">Jane (蔡宛真)</button>
+            <button class="filter-pill" onclick="setTrackerOwner('Vanessa', this)">Vanessa (陳慧盈)</button>
+            <button class="filter-pill" onclick="setTrackerOwner('Duck', this)">Duck (翁于婷)</button>
+            <button class="filter-pill" onclick="setTrackerOwner('Lucy', this)">Lucy (陳詩茹)</button>
+            <button class="filter-pill" onclick="setTrackerOwner('Julia', this)">Julia (張淳雅)</button>
+            <button class="filter-pill" onclick="setTrackerOwner('阿信', this)">阿信工程團隊</button>
+            <button class="filter-pill" onclick="setTrackerOwner('採購', this)">聚沙/採購處</button>
+          </div>
+        </div>
+
+        <!-- Status & Priority Filter -->
+        <div class="filter-subgroup">
+          <span class="filter-subgroup-label">⚡ 狀態優先：</span>
+          <div class="filter-pills" id="statusFilters">
+            <button class="filter-pill active" onclick="setTrackerStatus('all', this)">全部狀態</button>
+            <button class="filter-pill" onclick="setTrackerStatus('pending', this)">待處理 (<span id="cntPending">0</span>)</button>
+            <button class="filter-pill" onclick="setTrackerStatus('in-progress', this)">進行中 (<span id="cntProgress">0</span>)</button>
+            <button class="filter-pill" onclick="setTrackerStatus('done', this)">✓ 已完成/已裁定 (<span id="cntDone">0</span>)</button>
+            <button class="filter-pill" onclick="setTrackerPriority('high', this)">🔥 高優先級 (<span id="cntHigh">0</span>)</button>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Stats Bar -->
     <div class="tracker-stats-bar">
       <div class="tracker-stat-box">
-        <div class="num" id="statTotal">42</div>
-        <div class="desc">總行動項目</div>
-      </div>
-      <div class="tracker-stat-box" style="border-left:3px solid var(--green)">
-        <div class="num" style="color:var(--green)" id="statDone">4</div>
-        <div class="desc">已完成 / 主席已裁定</div>
-      </div>
-      <div class="tracker-stat-box" style="border-left:3px solid var(--coral)">
-        <div class="num" style="color:var(--coral)" id="statHigh">23</div>
-        <div class="desc">🔥 高優先級待辦</div>
+        <div class="num" id="statTotal">36</div>
+        <div class="desc">總行動項目數</div>
       </div>
       <div class="tracker-stat-box" style="border-left:3px solid var(--teal)">
-        <div class="num" style="color:var(--teal)" id="statProgress">15</div>
-        <div class="desc">進行中 / 推進中</div>
+        <div class="num" style="color:var(--teal)" id="statOct">14</div>
+        <div class="desc">2026年10月進展待辦</div>
+      </div>
+      <div class="tracker-stat-box" style="border-left:3px solid var(--green)">
+        <div class="num" style="color:var(--green)" id="statSep">8</div>
+        <div class="desc">2026年9月進展待辦</div>
+      </div>
+      <div class="tracker-stat-box" style="border-left:3px solid var(--coral)">
+        <div class="num" style="color:var(--coral)" id="statHigh">20</div>
+        <div class="desc">🔥 高優先級待辦</div>
+      </div>
+      <div class="tracker-stat-box" style="border-left:3px solid #68369b">
+        <div class="num" style="color:#68369b" id="statDone">12</div>
+        <div class="desc">✓ 已完成 / 主席已裁定</div>
       </div>
     </div>
 
+    <!-- Action Items List -->
     <div class="action-items-list" id="actionItemsContainer">
       <!-- Dynamically Rendered by JS -->
     </div>
@@ -2840,9 +3945,11 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 (function(){
   /* ================= ROUTING & PRESENTATION ENGINE ================= */
   var state = { view:'home', idx:0 };
-  var last = { p5:0, p1:0, p2:0, p3:0, p4:0 };
+  var last = { report:0, mgmt:0, p5:0, p1:0, p2:0, p3:0, p4:0 };
 
   var parts = {
+    report: Array.from(document.querySelectorAll('#view-report .slide')),
+    mgmt: Array.from(document.querySelectorAll('#view-mgmt .slide')),
     p5: Array.from(document.querySelectorAll('#view-p5 .slide')),
     p1: Array.from(document.querySelectorAll('#view-p1 .slide')),
     p2: Array.from(document.querySelectorAll('#view-p2 .slide')),
@@ -2850,56 +3957,67 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
     p4: Array.from(document.querySelectorAll('#view-p4 .slide'))
   };
 
-  var views = {
-    home: document.getElementById('view-home'),
-    p5: document.getElementById('view-p5'),
-    p1: document.getElementById('view-p1'),
-    p2: document.getElementById('view-p2'),
-    p3: document.getElementById('view-p3'),
-    p4: document.getElementById('view-p4'),
-    tracker: document.getElementById('view-tracker')
-  };
+  var partOrder = ['report', 'mgmt', 'p5', 'p1', 'p2', 'p3', 'p4'];
 
-  var deckbar = document.getElementById('deckbar');
-  var fill = document.getElementById('progressFill');
-  var counter = document.getElementById('counter');
-
-  function render(){
-    Object.keys(views).forEach(function(k){
-      if(views[k]) views[k].classList.toggle('active', k === state.view);
+  function updateNav(v){
+    document.querySelectorAll('.topnav a').forEach(function(a){
+      var n = a.getAttribute('data-nav');
+      if(n === v) a.classList.add('active');
+      else a.classList.remove('active');
     });
-
-    var navs = document.querySelectorAll('[data-nav]');
-    for(var i=0; i<navs.length; i++){
-      navs[i].classList.toggle('active', navs[i].getAttribute('data-nav') === state.view);
-    }
-
-    if(state.view === 'home' || state.view === 'tracker'){
-      deckbar.style.display = 'none';
-    } else {
-      deckbar.style.display = 'block';
-      var slides = parts[state.view] || [];
-      slides.forEach(function(s, i){ s.classList.toggle('active', i === state.idx); });
-      counter.textContent = (state.idx + 1) + ' / ' + slides.length;
-      fill.style.width = ((state.idx + 1) / slides.length * 100) + '%';
-      last[state.view] = state.idx;
-    }
-    window.scrollTo(0, 0);
   }
 
-  function goHash(hash){
-    hash = (hash || '#home').replace('#','');
-    if(hash === 'home' || hash === ''){ state.view = 'home'; render(); return; }
-    if(hash === 'tracker' || hash === 'action' || hash === 'followup'){
-      state.view = 'tracker'; render(); return;
+  function render(){
+    document.querySelectorAll('.view').forEach(function(el){ el.classList.remove('active'); });
+    var deckbar = document.getElementById('deckbar');
+
+    if(state.view === 'home'){
+      document.getElementById('view-home').classList.add('active');
+      deckbar.style.display = 'none';
+      updateNav('home');
+      window.scrollTo(0,0);
+      return;
     }
-    var m = hash.match(/^(p1|p2|p3|p4|p5)-(\d+)$/);
+
+    if(state.view === 'tracker'){
+      document.getElementById('view-tracker').classList.add('active');
+      deckbar.style.display = 'none';
+      updateNav('tracker');
+      window.scrollTo(0,0);
+      return;
+    }
+
+    var vEl = document.getElementById('view-' + state.view);
+    if(vEl){
+      vEl.classList.add('active');
+      var slides = parts[state.view] || [];
+      slides.forEach(function(s, i){
+        if(i === state.idx) s.classList.add('active');
+        else s.classList.remove('active');
+      });
+      deckbar.style.display = 'block';
+      document.getElementById('counter').textContent = (state.idx + 1) + ' / ' + slides.length;
+      document.getElementById('progressFill').style.width = (((state.idx + 1) / slides.length) * 100) + '%';
+      updateNav(state.view);
+      window.scrollTo(0,0);
+    }
+  }
+
+  function goHash(h){
+    var hash = (h || location.hash || '').replace(/^#/, '');
+    if(!hash || hash === 'home'){ state.view = 'home'; render(); return; }
+    if(hash === 'tracker'){ state.view = 'tracker'; render(); return; }
+
+    var m = hash.match(/^([a-z0-9]+)(?:-(\d+))?$/);
     if(m){
-      var v = m[1], i = parseInt(m[2], 10) - 1;
-      if(parts[v] && parts[v][i]){ state.view = v; state.idx = i; render(); return; }
-    }
-    if(hash === 'p1' || hash === 'p2' || hash === 'p3' || hash === 'p4' || hash === 'p5'){
-      state.view = hash; state.idx = last[hash] || 0; render(); return;
+      var v = m[1];
+      var idx = m[2] ? parseInt(m[2], 10) - 1 : 0;
+      if(parts[v]){
+        state.view = v;
+        state.idx = Math.max(0, Math.min(idx, parts[v].length - 1));
+        last[v] = state.idx;
+        render(); return;
+      }
     }
     state.view = 'home'; render();
   }
@@ -2913,26 +4031,33 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   function move(d){
     if(state.view === 'tracker') return;
     if(state.view === 'home'){
-      if(d > 0){ state.view = 'p5'; state.idx = 0; render(); setHash(); }
+      if(d > 0){ state.view = 'report'; state.idx = 0; render(); setHash(); }
       return;
     }
     var slides = parts[state.view] || [];
     var n = state.idx + d;
+    var curPartIdx = partOrder.indexOf(state.view);
+
     if(n < 0){
-      if(state.view === 'p1'){ state.view = 'p5'; state.idx = parts.p5.length - 1; }
-      else if(state.view === 'p2'){ state.view = 'p1'; state.idx = parts.p1.length - 1; }
-      else if(state.view === 'p3'){ state.view = 'p2'; state.idx = parts.p2.length - 1; }
-      else if(state.view === 'p4'){ state.view = 'p3'; state.idx = parts.p3.length - 1; }
-      else { state.view = 'home'; }
+      if(curPartIdx > 0){
+        var prevPart = partOrder[curPartIdx - 1];
+        state.view = prevPart;
+        state.idx = parts[prevPart].length - 1;
+      } else {
+        state.view = 'home';
+      }
     } else if(n >= slides.length){
-      if(state.view === 'p5'){ state.view = 'p1'; state.idx = 0; }
-      else if(state.view === 'p1'){ state.view = 'p2'; state.idx = 0; }
-      else if(state.view === 'p2'){ state.view = 'p3'; state.idx = 0; }
-      else if(state.view === 'p3'){ state.view = 'p4'; state.idx = 0; }
-      else { state.view = 'tracker'; }
+      if(curPartIdx < partOrder.length - 1){
+        var nextPart = partOrder[curPartIdx + 1];
+        state.view = nextPart;
+        state.idx = 0;
+      } else {
+        state.view = 'tracker';
+      }
     } else {
       state.idx = n;
     }
+    last[state.view] = state.idx;
     render(); setHash();
   }
 
@@ -2988,332 +4113,544 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 
   /* ================= TRACKER ACTION POOL DATA & LOGIC ================= */
   var rawActionPool = [
-    {
-      id: "A01",
-      title: "津谷食品：損害賠償條款最終協商",
-      desc: "本週與對方協商損害賠償條款，提出「提前告知＋賠償半年租金」折中方案（國泰已確認可接受），推動窗口說服董事長；不成則評估走向。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.1業務開發 / A",
-      done: false,
-      note: "8/24更新：三點爭議已收斂至單一賠償爭點，國泰已同意半年租金方案。"
-    },
-    {
-      id: "A02",
-      title: "將奇景中標復盤寫成「投標成本優化檢查表」納入報價 SOP",
-      desc: "將五大設計優化（DC線集中、獨立併網等）＋計價單位重構（工料計價）＋發包顆粒度合併，納入報價SOP並在下次週會導讀。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.1業務 / 4.3採購 / A",
-      done: false,
-      note: "已於 Part 4 完成標準表格制定，待下次週會導讀。"
-    },
-    {
-      id: "A03",
-      title: "修正台糖兩案 Pipeline 數據並成立專案級投標小組",
-      desc: "原標10MW/3MW，實際規模大於20MW/5MW需修正；評估升格為專案級資源配置（單獨排程、指定champion、提前3個月備標）。",
-      priority: "high",
-      source: "#005",
-      pdca: "2.2事業經營 / P",
-      done: false,
-      note: "台糖兩案佔 Pipeline 過半，決標落在 12/18。"
-    },
-    {
-      id: "A04",
-      title: "建立公司租約賠償條款標準立場文件",
-      desc: "確立我方底線、可讓步範圍、折中模板（提前告知＋半年租金），避免逐案重談與雙重標準被客戶反制。",
-      priority: "high",
-      source: "#005",
-      pdca: "3.8法務 / 4.1業務 / A",
-      done: false,
-      note: "已納入 Part 4 SOP 手冊，待法務正式發布。"
-    },
-    {
-      id: "A05",
-      title: "釐清並統一 Y2026 業績目標數字（10億 vs 13.8億）",
-      desc: "整體表10億 vs 人員明細總計13.8億（含離職人員3億），連動明年業績分配草稿與考核基準。",
-      priority: "high",
-      source: "#005",
-      pdca: "2.2事業經營 / 3.5財務 / C",
-      done: false,
-      note: "8/24 主席裁定：整體追蹤以 10 億為基準；8月底與 Lucy 重新平衡明年分配。"
-    },
-    {
-      id: "A06",
-      title: "城鋒科技：確認漏水賠償條款用印",
-      desc: "待董事長返回公司後確認漏水賠償條款（維修期間乙方自行承擔租金、不賠衍生損失），推進 946 萬合約用印。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.1業務開發 / A",
-      done: false,
-      note: "台中窗口已溝通，董事長返台即安排用印。"
-    },
-    {
-      id: "A07",
-      title: "和富工業：追蹤設備移轉合作協議與國泰投審會",
-      desc: "本週追蹤設備移轉合作協議回饋、更新投審會簡報、正式約國泰投審會時間，爭取8月底簽約，簽約前赴現場核驗。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.1業務開發 / D",
-      done: false,
-      note: "建坤主租約已妥，3頁移轉協議已送出。"
-    },
-    {
-      id: "A08",
-      title: "國泰 8-13 埤塘整改：本月底完成 BOM",
-      desc: "收攏2-3家報價後提案，接洽廠商報價偏高待國泰高層核可，注意整新費用納入投報後可能虧損，實際預計明年展開。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.4工程管理 / P",
-      done: false,
-      note: "推定即會議所稱「國泰346整改」，月底前產出正式報價。"
-    },
-    {
-      id: "A09",
-      title: "全體業務落實「業務六問前三問」並更新 Pipeline",
-      desc: "修正台糖數據、補齊S0預估數字、標註每案 champion 與業務六問前三問結果，剔除無剛需偽商機。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.1業務開發 / D",
-      done: false,
-      note: "8/24 主席通告全員執行。"
-    },
-    {
-      id: "A10",
-      title: "8月底前與 Lucy 敲定明年業績分配草稿",
-      desc: "8月底前敲定分配草稿，9月確定整體執行策略，下次週會討論細節。",
-      priority: "high",
-      source: "#005",
-      pdca: "2.2事業經營 / P",
-      done: false,
-      note: "啟動 2027 戰略佈局。"
-    },
-    {
-      id: "A11",
-      title: "奇景光電：8 月底前取得正式 PO",
-      desc: "採購返崗，總部停車場與幼稚園二廠（合計 1,865 萬）鎖定 8 月底前取得 PO。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.1業務開發 / D",
-      done: false,
-      note: "Duck 負責，中標復盤已完成。"
-    },
-    {
-      id: "A12",
-      title: "東南實業：由我方先行向台電申請饋線排隊",
-      desc: "合約小調整本週寄出；由我方先行向台電申請饋線排隊並同步回報進度。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.4工程 / 4.1業務 / D",
-      done: false,
-      note: "Jane 負責，饋線已由我方送件。"
-    },
-    {
-      id: "A13",
-      title: "順順展科技：推動第一期＋第二期整體規劃",
-      desc: "與新建廠窗口建立聯繫，最遲9月初送建造申請，推動既有廠＋新建廠整體規劃。",
-      priority: "medium",
-      source: "#005",
-      pdca: "4.1業務開發 / P",
-      done: false,
-      note: "重新安排現場鋼構勘查。"
-    },
-    {
-      id: "A14",
-      title: "宜佳美畜牧場：光電圖確認與饋線排隊",
-      desc: "9月完成保存登記，提供光電圖給業主確認，續推報價、簽約與饋線排隊。",
-      priority: "medium",
-      source: "#005",
-      pdca: "4.1業務開發 / D",
-      done: false,
-      note: "排最大容量送台電申請。"
-    },
-    {
-      id: "A15",
-      title: "中山大學微電網：對齊校方細部需求與標書分工",
-      desc: "將軟體規格提供 EMS 廠商，預計8月底前完成內部討論，分配標書撰寫分工。",
-      priority: "medium",
-      source: "#005",
-      pdca: "4.2設計 / 4.1業務 / P",
-      done: false,
-      note: "預估 3MW / 9,000 萬元。"
-    },
-    {
-      id: "A16",
-      title: "資正電子：BIPV 技術交流與鄰抗反光評估",
-      desc: "大可與 Vanessa 進行造型塗層技術交流；向 Vanessa 確認「對面廠商鄰抗反光反對」是否屬實並納入方案設計考量。",
-      priority: "medium",
-      source: "#005",
-      pdca: "3.4研發 / 4.1業務 / C",
-      done: false,
-      note: "評估合作瑞庭光電或日商。"
-    },
-    {
-      id: "A17",
-      title: "環泥阿蓮廠：以三家報價比對釐清表後儲能規格",
-      desc: "洽詢三家報價比對，釐清表後儲能細部規格與我方服務範圍，作為業務學習樣本。",
-      priority: "medium",
-      source: "#005",
-      pdca: "4.1業務 / 3.3教育 / D",
-      done: false,
-      note: "Lucy 負責。"
-    },
-    {
-      id: "A18",
-      title: "桃苗中壢廠：確認建築師變更費用納入統包報價",
-      desc: "確認建築師變更衍生費用納入光電統包後之報價數字，降低業主前期顧慮。",
-      priority: "medium",
-      source: "#005",
-      pdca: "4.1業務開發 / D",
-      done: false,
-      note: "436kWp / 1,746 萬，勝率 80%。"
-    },
-    {
-      id: "A19",
-      title: "AIDC 算力中心：確認向東和提出「租金 250」方案",
-      desc: "確認向東和提出之租金 250 計價單位，並由 Lucy 承接後續推進。",
-      priority: "high",
-      source: "#005",
-      pdca: "2.2事業經營 / D",
-      done: false,
-      note: "容量目標 20MW。"
-    },
-    {
-      id: "A20",
-      title: "安德順：斗南/屏東兩案移交專案單位承接",
-      desc: "斗南9月動工、屏東待送件；爭取9月揭幕會議並確認移交專案單位之交接手續。",
-      priority: "medium",
-      source: "#005",
-      pdca: "4.5專案協作 / C",
-      done: false,
-      note: "後續由專案部接續工程。"
-    },
-    {
-      id: "A21",
-      title: "農科園區（特嘉、天守）批次開發與報價模型建置",
-      desc: "建立農科園區批次開發清單與專用報價模型（修正下午多雨發電參數 3.2~3.3 度）。",
-      priority: "high",
-      source: "#004",
-      pdca: "4.1業務 / 4.2設計 / P",
-      done: false,
-      note: "特嘉9月使照、天守待建築圖。"
-    },
-    {
-      id: "A22",
-      title: "將「設計容量差異」拆為安全取捨 vs 規範保守兩類歸因",
-      desc: "永祺通風球翻案後，重新界定工程中心檢討範圍，避免誤將安全設計當缺失。",
-      priority: "high",
-      source: "#004",
-      pdca: "3.4研發 / 4.4工程 / C",
-      done: false,
-      note: "已納入 P2-1 簡報分析。"
-    },
-    {
-      id: "A23",
-      title: "側牆 BIPV 能力布建路徑評估（自建 vs 合作）",
-      desc: "評估合作瑞庭光電/日商，並確認 3,600kW 是否為自建能力門檻。",
-      priority: "medium",
-      source: "#004",
-      pdca: "3.4研發 / 2.2經營 / P",
-      done: false,
-      note: "大可研究中。"
-    },
-    {
-      id: "A24",
-      title: "將「邊做邊過關」整理為標準送件 SOP",
-      desc: "優先序：饋線 ➔ 同意備案 ➔ 免罰，提供順順展、和富等案件標準參照。",
-      priority: "high",
-      source: "#003",
-      pdca: "4.4工程管理 / P",
-      done: false,
-      note: "已成週會普遍運作共識。"
-    },
-    {
-      id: "A25",
-      title: "國泰整新案（7.3MW＋5.4MW）EPC／運維分工與分潤定案",
-      desc: "追蹤國泰整新 EPC／運維分工與分潤結果，納入下次管理會議議程。",
-      priority: "high",
-      source: "#001",
-      pdca: "2.2事業經營 / C",
-      done: false,
-      note: "文運工程團隊盤點中。"
-    },
-    {
-      id: "A26",
-      title: "整理「開發轉運維業績算法」與儲能 1MW 營收教育素材",
-      desc: "降低業務對儲能認知落差，提升表後儲能業務推進意願。",
-      priority: "medium",
-      source: "#001",
-      pdca: "3.3人資 / 4.1業務 / D",
-      done: false,
-      note: "已納入 P2-3 宣導。"
-    },
-    // Completed Items
-    {
-      id: "C01",
-      title: "確認公司整體業績金額統計基準",
-      desc: "已於 2026-08-17 由 David 裁定：以 8/17 口徑（已簽約＋銷售訂單 / 含未簽約總額）為追蹤主軸。",
-      priority: "high",
-      source: "#004",
-      pdca: "2.2事業經營",
-      done: true,
-      note: "已於 2026-08-17 結案裁定。"
-    },
-    {
-      id: "C02",
-      title: "西進案（奇景光電）成功經驗分享",
-      desc: "Duck 於 2026-08-24 週會完成中標復盤分享，包含五大設計優化與兩項計價重構。",
-      priority: "high",
-      source: "#004",
-      pdca: "4.1業務開發",
-      done: true,
-      note: "已於 2026-08-24 週會圓滿完成。"
-    },
-    {
-      id: "C03",
-      title: "確認「聚鋼」是否即鉅鋼機械",
-      desc: "2026-08-24 正式紀錄確認：即鉅鋼機械，因剛需低、窗口與高層無共識，已降溫觀望。",
-      priority: "high",
-      source: "#005",
-      pdca: "4.1業務開發",
-      done: true,
-      note: "已結案，勝率調整為 20%。"
-    },
-    {
-      id: "C04",
-      title: "建立各案件固定聯繫/拜訪機制",
-      desc: "2026-08-24 已由更佳制度取代：改為「業務六問前三問＋核心 Champion」逐案核實機制。",
-      priority: "medium",
-      source: "#002",
-      pdca: "4.5專案協作",
-      done: true,
-      note: "已落實於週會常態制度。"
-    }
-  ];
+  {
+    "id": "OCT19-01",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "正聚/證據案：圓桌會議前完成 HR 相關成本鎖價",
+    "desc": "因國際銅價暴漲且東南亞第三地模組進口受阻，要求聚沙於下次圓桌會議前鎖定 HR 相關成本，防止後續成本進一步上升侵蝕毛利。",
+    "owner": "聚沙 (採購處)",
+    "deadline": "2026-10-26 (圓桌會前)",
+    "priority": "high",
+    "status": "pending",
+    "pdca": "4.3資材採購 / A",
+    "decision": "大衛裁定：開挖排 2027、供電 2028；模組海外代工正負公差風險高，合約規格嚴禁第三方 EL 驗收要求。"
+  },
+  {
+    "id": "OCT19-02",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "東南實業：附屬工程赴現場複勘並向業主報價",
+    "desc": "附屬工程追加金額超過 100 萬，本週五赴現場複勘，確認浪板及施工費用後向業主報價，目標 2026 年內讓附屬工程進場施工。",
+    "owner": "Jane (蔡宛真)",
+    "deadline": "2026-10-23 (本週五)",
+    "priority": "high",
+    "status": "pending",
+    "pdca": "4.1業務開發 / D",
+    "decision": "主合約董事長已簽署，預計 11 月經董事會完成正式簽約；光電部分全力配合排期。"
+  },
+  {
+    "id": "OCT19-03",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "東南實業彰化案：委託海林協商跨私設道路免分案",
+    "desc": "彰化案因跨越私設道路被台電要求拆分兩案（500kW + 200kW），各自需轉高壓拉高成本；我方主張取得全數所有權人同意書，委託海林溝通共用單一總電站與饋線。",
+    "owner": "海林 / Jane",
+    "deadline": "2026-10-31",
+    "priority": "high",
+    "status": "pending",
+    "pdca": "4.4工程 / 4.1業務 / P",
+    "decision": "主管裁定：目前該案毛利水平尚可承受，但分案轉高壓費用過鉅，全力爭取合一備案。"
+  },
+  {
+    "id": "OCT19-04",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "大順小散光電：團隊包辦合法執照申辦",
+    "desc": "該建物前任屋主改建屋頂超出原就地合法範圍，高市府要求重辦執照；團隊決定包辦合規申請納入光電專案，避免業主自辦延宕半年以上。",
+    "owner": "阿信工程團隊",
+    "deadline": "2026-11-15",
+    "priority": "high",
+    "status": "in-progress",
+    "pdca": "4.4工程管理 / D",
+    "decision": "大衛拍板：申請流程簡化由我方全包，以進場時間換取商機時效。"
+  },
+  {
+    "id": "OCT19-05",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "軍配示範案場：公司自行短期持有出資與合約推進",
+    "desc": "安平工業區圓形屋頂 150kW 案場，國泰不收 <200kW 小案、中租要求保發 2 年；葉大衛拍板由公司自行短期持有投入 500-600 萬作為南區自有示範案場。",
+    "owner": "葉大衛 (David) / 財務部",
+    "deadline": "2026-10-31",
+    "priority": "high",
+    "status": "in-progress",
+    "pdca": "2.2事業經營 / A",
+    "decision": "目前產權過戶中，2026 完成申請、2027 施工；徹底破除國泰小案收購門檻卡點。"
+  },
+  {
+    "id": "OCT19-06",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "三星螺絲：10月簽租約/11月簽工程約與饋線預埋",
+    "desc": "董事會已同意合作條件，一期 700 多坪 (135kWp)，工廠已動工；先行向台電申請饋線並配合土建預埋美觀管路；大可跟進國泰進度。",
+    "owner": "Jane / Duck (大可)",
+    "deadline": "2026-11-30",
+    "priority": "high",
+    "status": "pending",
+    "pdca": "4.1業務開發 / D",
+    "decision": "一期先做 135kWp，二期按原條件保留優先權；滿足業主美觀性高規格要求。"
+  },
+  {
+    "id": "OCT19-07",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "東和紡織 AIDC 園區：大衛再晤 Toby 評估貨櫃替代方案",
+    "desc": "OpenClaw 擬開發 100MW AIDC 園區（融資規模 1000~1500 億），但東和廠方拒絕合作；葉大衛將再與 Toby 對接，評估以廠內貨櫃資料中心免拆廠方案再行溝通。",
+    "owner": "葉大衛 (David)",
+    "deadline": "2026-10-31",
+    "priority": "high",
+    "status": "pending",
+    "pdca": "2.2事業經營 / P",
+    "decision": "核心在於找到算力變現者；具備天然氣發電與光纖海纜優勢，不放棄溝通機會。"
+  },
+  {
+    "id": "OCT19-08",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "聯式電子 300kW：原廠防護效果確認與鋼構預算提報",
+    "desc": "半導體酸類廠房，原廠確認 PD inverter 防護效果；鋼構立柱費用高昂，採購詢價並提交預算至人事計入明年，主管建議業主自建鋼構我方承攬統包。",
+    "owner": "Vanessa / 採購處",
+    "deadline": "2026-10-23 (本週內)",
+    "priority": "medium",
+    "status": "pending",
+    "pdca": "4.1業務 / 4.3採購 / C",
+    "decision": "大衛查看細節後決策；傾向不承攬全案鋼構，由業主出資降低我方風險。"
+  },
+  {
+    "id": "OCT19-09",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "中山大學物聯網專案：完成排版交付與目錄編製",
+    "desc": "專案企劃已完成 9 成共 80 多頁（V7），完成前四章討論與排版；合作老師 8 萬元繪電線條交付後完成最終排版目錄。",
+    "owner": "Duck / Julia",
+    "deadline": "2026-10-21",
+    "priority": "medium",
+    "status": "in-progress",
+    "pdca": "4.5專案協作 / D",
+    "decision": "物聯網專案作為投標技術底座；刪除冗餘內容，確保交付品質。"
+  },
+  {
+    "id": "OCT19-10",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "辰亞台中港地面型：赴台中洽談 BOS 代工總包協議",
+    "desc": "下週三與辰亞洽談台中港地面型案場；辰亞具備 2-3 億資金，我方負責 BOS 部分按容量總包，推進合作協議簽署。",
+    "owner": "說話人1 / 葉大衛",
+    "deadline": "2026-10-28 (下週三)",
+    "priority": "high",
+    "status": "pending",
+    "pdca": "4.1業務開發 / D",
+    "decision": "辰亞主設備自行採購，我方聚焦工程統包毛利，商業模式清晰快速變現。"
+  },
+  {
+    "id": "OCT19-11",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "潤泰精密綠電買賣：黑石回購價格協商 (2.5 vs 2.2元)",
+    "desc": "設備掛建控名下與黑石簽綠電買賣契約；初報每度 2.5 元對方反饋 2.2 元，大衛與團隊持續協商爭取 2.3~2.4 元平衡點。",
+    "owner": "葉大衛 (David) / Vanessa",
+    "deadline": "2026-11-15",
+    "priority": "high",
+    "status": "in-progress",
+    "pdca": "2.2事業經營 / A",
+    "decision": "方案一簽三年無饋線失效避免銀行輪押；方案二黑石綠電回購，雙軌推進。"
+  },
+  {
+    "id": "OCT19-12",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "微電網合作收斂：玉鼎對接與中山大學投標架構",
+    "desc": "玉鼎微電網由大衛對接僅接簡單案；中山大學微電網鎖定台大能源+進能服聯合體，預設採 meta+鎮江合作架構，嚴格避開無限制處罰條款。",
+    "owner": "葉大衛 (David) / Duck",
+    "deadline": "2026-11-15",
+    "priority": "high",
+    "status": "in-progress",
+    "pdca": "2.2事業經營 / P",
+    "decision": "四年 180 億微電網市場，鎖定單區 3000~5000 萬優質案場，不碰複雜爛案。"
+  },
+  {
+    "id": "OCT19-13",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "馬稠後區域饋線搶位：葉診所與三星案後續排隊",
+    "desc": "馬稠後區域已有 3-6 家排隊，總佔用 15~30kW；搶在三星案後完成葉診所 (6-10kW) 與世坤後續饋線送件登記。",
+    "owner": "Jane / 工程中心",
+    "deadline": "2026-10-31",
+    "priority": "medium",
+    "status": "in-progress",
+    "pdca": "4.4工程管理 / D",
+    "decision": "世坤排第 7 位尚餘 3.3MW 空間，中小企業案件務必卡位以防額滿。"
+  },
+  {
+    "id": "OCT19-14",
+    "month": "2026-10",
+    "week": "2026-10-19",
+    "title": "天守實業：舊廠產權交割後啟動光電收購與整改",
+    "desc": "業主放棄自建轉收購農科舊工廠，舊廠屋頂已具光電；等待 12 月中工廠完成交割後，立即啟動光電收購與整改協議。",
+    "owner": "Lucy (陳詩茹)",
+    "deadline": "2026-12-15",
+    "priority": "medium",
+    "status": "pending",
+    "pdca": "2.2事業經營 / D",
+    "decision": "併購既有案場快於從零開發，交割日前先完成發電數據測算。"
+  },
+  {
+    "id": "SEP21-01",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "既有建物簽約立案：立即打星移交阿信團隊排期",
+    "desc": "簽約完成之完整既有建物案場，需立刻在系統打星立案交給阿信工程團隊安排 PM 排期，嚴格禁止業務與設計端擱置 2-3 個月導致進場延誤半年。",
+    "owner": "全體業務同仁 / 阿信團隊",
+    "deadline": "2026-09-30 (簽約後3日內)",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.4工程管理 / 4.1業務 / A",
+    "decision": "主席裁定：已簽約案件無縫銜接工程，立案時限列入每月績效考核。"
+  },
+  {
+    "id": "SEP21-02",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "Y2027 簽約目標 20 億元三板塊拆分與業務對齊",
+    "desc": "統包工程 4 億（光電自建/微電網/表後儲能）＋ 資產管理 6 億（屋頂出租/收購整改）＋ AIDC 開發 10 億；Vanessa/Jane主攻新建屋頂，大可主攻資產收購。",
+    "owner": "葉大衛 (David) / Lucy",
+    "deadline": "2026-09-30",
+    "priority": "high",
+    "status": "done",
+    "pdca": "2.2事業經營 / P",
+    "decision": "核對調整業務目標表數字，對齊 Pipeline 數據，建立高階業績追蹤基準。"
+  },
+  {
+    "id": "SEP21-03",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "潤泰精密光電案：落實「租賃排擴建 2.5 年」饋線卡位",
+    "desc": "屏東里港水泥廠三期屋頂光伏為剛需，業主傾向租賃；因無可用饋線，主管定調以「租賃排擴建」方式等待兩年半，先簽約鎖定。",
+    "owner": "Vanessa / 說話人1",
+    "deadline": "2026-09-22",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務開發 / P",
+    "decision": "現勘討論遠東鋼鐵預算，同步敲定潤泰精密操作方案。"
+  },
+  {
+    "id": "SEP21-04",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "城鋒科技新建廠房：與原團隊董座會面破除 30% 比價",
+    "desc": "新經營團隊引進競品比價（我方報 10%、對手報 30% 租金）；整理差異分析表提供業主，本週約原團隊董事長見面穩固主場。",
+    "owner": "Vanessa / 葉大衛",
+    "deadline": "2026-09-25",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務開發 / A",
+    "decision": "主管陪同高層會面，以工程專業、資產合規與國泰長期信譽破解高租金陷阱。"
+  },
+  {
+    "id": "SEP21-05",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "馬東倉庫項目：雙十連假前曹協帶隊赴上海拜訪二代",
+    "desc": "馬東大面積倉庫屋頂出租案，業主二代常駐上海；改約於十月雙十連假前期，由曹協親自帶隊赴上海拜訪關鍵決策者。",
+    "owner": "曹協 / 說話人1",
+    "deadline": "2026-10-10",
+    "priority": "medium",
+    "status": "done",
+    "pdca": "4.1業務開發 / D",
+    "decision": "高階主管跨海拜訪，展現誠意並直接對接集團核心投資人。"
+  },
+  {
+    "id": "SEP21-06",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "翔展精密 (原順展)：核查 65 年前無建照建物合法性",
+    "desc": "容量已確定，下週啟動招標；重點核查民國 65 年以前無建造執照建物的合法性證明文件，與新建廠合併申請饋線。",
+    "owner": "Jane / 阿信團隊",
+    "deadline": "2026-09-30",
+    "priority": "medium",
+    "status": "done",
+    "pdca": "4.4工程管理 / C",
+    "decision": "土木技師與建築師介入補正合法性，先立案申請爭取時限。"
+  },
+  {
+    "id": "SEP21-07",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "中租車城項目：跟進投審會通過並決標簽約",
+    "desc": "確認中租投審會審核進度，目標本月完成決標、下個月完成正式簽約。",
+    "owner": "說話人1 / Duck",
+    "deadline": "2026-09-30",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務開發 / D",
+    "decision": "國泰與中租雙軌佈局，鎖定 9-10 月決標進程。"
+  },
+  {
+    "id": "SEP21-08",
+    "month": "2026-09",
+    "week": "2026-09-21",
+    "title": "綠電憑證媒合商機：對接中市場大額訂單需求",
+    "desc": "中市場業主接獲國外終端大額憑證訂單自身不足；媒合我方有憑證銷售需求之簽約客戶，洽商回饋機制與憑證經紀手續費。",
+    "owner": "說話人1 / 方生",
+    "deadline": "2026-10-15",
+    "priority": "medium",
+    "status": "in-progress",
+    "pdca": "2.2事業經營 / D",
+    "decision": "善用下半年憑證申報旺季，為客戶提供綠電加值服務並創造新營收。"
+  },
+  {
+    "id": "AUG24-01",
+    "month": "2026-08",
+    "week": "2026-08-24",
+    "title": "奇景中標復盤：五大優化與計價重構納入報價 SOP",
+    "desc": "奇景標案五大設計優化（DC集中/獨立併網/取消水泥覆蓋等）＋計價單位重構（劃線按工料、小容量合併發包統包價7000元），寫成投標成本優化檢查表納入報價 SOP。",
+    "owner": "Duck (翁于婷) / 採購處",
+    "deadline": "2026-08-31",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務 / 4.3採購 / A",
+    "decision": "已於 08-24 週會導讀完成，並在 Part 4 完成標準表格制定。"
+  },
+  {
+    "id": "AUG24-02",
+    "month": "2026-08",
+    "week": "2026-08-24",
+    "title": "津谷食品：損害賠償條款達成「半年租金」折中定案",
+    "desc": "業主要求違約賠全部租金，國泰原要求賠成本加未獲利益皆不合比例；確立「提前告知＋賠償半年租金」標準折中方案，國泰認可，立案簽字送出。",
+    "owner": "Vanessa (陳慧盈)",
+    "deadline": "2026-08-28",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務開發 / A",
+    "decision": "8/24 裁定：三點爭議收斂為半年租金折中，成為公司租約賠償範本。"
+  },
+  {
+    "id": "AUG24-03",
+    "month": "2026-08",
+    "week": "2026-08-24",
+    "title": "台糖兩案更正數據 (大於 20MW/5MW) 成立備標小組",
+    "desc": "修正明正停車場與大型車輛停車場數據，規模大於 20MW/5MW，帳面逾 9.3 億；成立專案級備標小組鎖定 12/18 決標。",
+    "owner": "葉大衛 (David) / Jane",
+    "deadline": "2026-10-31",
+    "priority": "high",
+    "status": "in-progress",
+    "pdca": "2.2事業經營 / P",
+    "decision": "台糖案佔 Pipeline 過半，單獨排程並配置專案 champion。"
+  },
+  {
+    "id": "AUG24-04",
+    "month": "2026-08",
+    "week": "2026-08-24",
+    "title": "城鋒科技：確認漏水賠償條款用印",
+    "desc": "維修期間乙方自行承擔租金、不賠償漏水衍生損失；台中窗口溝通後待董事長返台即用印。",
+    "owner": "Vanessa (陳慧盈)",
+    "deadline": "2026-08-31",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務開發 / A",
+    "decision": "比照津谷標準條款處理，不接受無限衍生責任。"
+  },
+  {
+    "id": "AUG24-05",
+    "month": "2026-08",
+    "week": "2026-08-24",
+    "title": "全體業務落實「業務六問前三問」清整 Pipeline",
+    "desc": "逐案核實剛需七三分法、決策人支持度、合作信任度，剔除無剛需偽商機；S0 階段亦須填預估數字。",
+    "owner": "全體業務同仁",
+    "deadline": "2026-08-31",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務開發 / D",
+    "decision": "全員落實執行，無剛需案件（如達亞）及時止損移出清單。"
+  },
+  {
+    "id": "AUG17-01",
+    "month": "2026-08",
+    "week": "2026-08-17",
+    "title": "和富工業：8/1 新法規「契約包」示範範本定案",
+    "desc": "解決起造人與光電申請人一致之卡點，採「主租約先簽、合作意向與設備移轉協議後補」三頁範本，國泰投審核可並收 20 萬定金。",
+    "owner": "Vanessa / 法務處",
+    "deadline": "2026-08-31",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務 / 3.8法務 / A",
+    "decision": "已成可複製範本，後續套用至特嘉食品、天守實業等 8/1 後建照新案。"
+  },
+  {
+    "id": "AUG17-02",
+    "month": "2026-08",
+    "week": "2026-08-17",
+    "title": "永祺車業：設計容量差異翻案檢視 (安全取捨 vs 規範保守)",
+    "desc": "釐清對手因鋪設通風球而多出容量，我方基於安全設計未鋪；將容量差異重新界定為「安全取捨」與「規範保守」，維持安全設計標準。",
+    "owner": "工程中心 / Vanessa",
+    "deadline": "2026-08-20",
+    "priority": "high",
+    "status": "done",
+    "pdca": "3.4研發 / 4.4工程 / C",
+    "decision": "大衛裁定：安全設計不該檢討，堅守結構安全底線向客戶解釋。"
+  },
+  {
+    "id": "AUG17-03",
+    "month": "2026-08",
+    "week": "2026-08-17",
+    "title": "農科園區（特嘉、天守）批次開發清單與專用報價模型",
+    "desc": "建立農科園區批次開發清單，修正下午多雨發電參數（3.2~3.3度），建立 500kW 級專用標準報價模型。",
+    "owner": "Lucy (陳詩茹) / 設計處",
+    "deadline": "2026-08-31",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.1業務 / 4.2設計 / P",
+    "decision": "場域型批次開發降低邊際成本，特嘉 9 月使照、天守待建築圖。"
+  },
+  {
+    "id": "AUG17-04",
+    "month": "2026-08",
+    "week": "2026-08-17",
+    "title": "側牆 BIPV 能力布建路徑評估與鄰抗反光防範",
+    "desc": "資正電子提出側牆 BIPV 需求與對面鄰抗反光；評估合作瑞庭光電/日商，大可研究造型塗層技術，訂出 3600kW 能力布建門檻。",
+    "owner": "大可 (Duck) / Vanessa",
+    "deadline": "2026-09-15",
+    "priority": "medium",
+    "status": "in-progress",
+    "pdca": "3.4研發 / 2.2經營 / P",
+    "decision": "小案不單獨開展能力，以合作模式為主；鄰抗反光納入標準設計核對項。"
+  },
+  {
+    "id": "AUG10-01",
+    "month": "2026-08",
+    "week": "2026-08-10",
+    "title": "建立「邊做邊過關」標準送件 SOP",
+    "desc": "新法規下確立送件優先序：饋線 ➔ 同意備案 ➔ 免罰；業務定位為攻方，後端風險由管理層承擔，先搶單再排障。",
+    "owner": "工程中心 / 業務處",
+    "deadline": "2026-08-20",
+    "priority": "high",
+    "status": "done",
+    "pdca": "4.4工程管理 / P",
+    "decision": "順順展、和富、津谷皆依此 SOP 運作，大幅縮短前期等待期。"
+  },
+  {
+    "id": "AUG10-02",
+    "month": "2026-08",
+    "week": "2026-08-10",
+    "title": "庫存品 445W 與 695W 模組優先導入新規",
+    "desc": "盤點 445W 剩約 3000 片、695W 剩約 4000 片，新案優先指定消化；採購部加速 695W 認證送審。",
+    "owner": "採購處 (居山) / 全體業務",
+    "deadline": "2026-08-31",
+    "priority": "high",
+    "status": "in-progress",
+    "pdca": "4.3資材採購 / D",
+    "decision": "自有庫存加快周轉，釋放公司現金流。"
+  },
+  {
+    "id": "AUG03-01",
+    "month": "2026-08",
+    "week": "2026-08-03",
+    "title": "國泰整新案 (7.3MW + 5.4MW) 雙軌推展架構",
+    "desc": "7.3MW 低效益案以運維接手保發承接；5.4MW 高效益案採 0 出資、進能服先墊整改費由分潤回收。",
+    "owner": "專案部 / 文運工程",
+    "deadline": "2026-09-30",
+    "priority": "high",
+    "status": "in-progress",
+    "pdca": "2.2事業經營 / C",
+    "decision": "打破案場沒自己做到底就沒業績之迷思，開發轉運維同樣計入業務戰功。"
+  },
+  {
+    "id": "JUL27-01",
+    "month": "2026-07",
+    "week": "2026-07-27",
+    "title": "下半年業務重心轉移：公部門、校園球場與微電網",
+    "desc": "大型地面光電受限後全面轉向風雨球場（中山大學、台糖）與微電網（教育部/衛福部/台電三軌道），展延機會清單至明年。",
+    "owner": "葉大衛 (David) / 全體業務",
+    "deadline": "2026-08-15",
+    "priority": "high",
+    "status": "done",
+    "pdca": "2.2事業經營 / P",
+    "decision": "確立南區由一般屋頂光電跨入微電網與儲能系統之轉型基石。"
+  },
+  {
+    "id": "JUL27-02",
+    "month": "2026-07",
+    "week": "2026-07-27",
+    "title": "建立手頭案件合作夥伴潛力與案場收購新商模標註",
+    "desc": "依會議建議，各業務梳理手上案件，標記長期合作夥伴潛力與案場收購標的，不只依賴單一EPC開發。",
+    "owner": "全體業務同仁",
+    "deadline": "2026-08-05",
+    "priority": "high",
+    "status": "done",
+    "pdca": "2.2事業經營 / P",
+    "decision": "催生天守舊廠光電收購與國泰整新整改商機。"
+  }
+];
 
-  var currentTrackerFilter = 'all';
+  var currentMonthFilter = 'all';
+  var currentWeekFilter = 'all';
+  var currentOwnerFilter = 'all';
+  var currentStatusFilter = 'all';
+  var currentPriorityFilter = 'all';
 
   function updateTrackerStats(){
     var total = rawActionPool.length;
-    var done = rawActionPool.filter(function(x){ return x.done; }).length;
-    var high = rawActionPool.filter(function(x){ return !x.done && x.priority === 'high'; }).length;
-    var pending = total - done;
+    var done = rawActionPool.filter(function(x){ return x.status === 'done'; }).length;
+    var progress = rawActionPool.filter(function(x){ return x.status === 'in-progress'; }).length;
+    var pending = rawActionPool.filter(function(x){ return x.status === 'pending'; }).length;
+    var high = rawActionPool.filter(function(x){ return x.priority === 'high'; }).length;
+    var oct = rawActionPool.filter(function(x){ return x.month === '2026-10'; }).length;
+    var sep = rawActionPool.filter(function(x){ return x.month === '2026-09'; }).length;
+    var aug = rawActionPool.filter(function(x){ return x.month === '2026-08'; }).length;
+    var jul = rawActionPool.filter(function(x){ return x.month === '2026-07'; }).length;
 
     document.getElementById('cntAll').textContent = total;
+    document.getElementById('cntOct').textContent = oct;
+    document.getElementById('cntSep').textContent = sep;
+    document.getElementById('cntAug').textContent = aug;
+    document.getElementById('cntJul').textContent = jul;
+
     document.getElementById('cntPending').textContent = pending;
-    document.getElementById('cntHigh').textContent = high;
+    document.getElementById('cntProgress').textContent = progress;
     document.getElementById('cntDone').textContent = done;
+    document.getElementById('cntHigh').textContent = high;
 
     document.getElementById('statTotal').textContent = total;
-    document.getElementById('statDone').textContent = done;
+    document.getElementById('statOct').textContent = oct;
+    document.getElementById('statSep').textContent = sep;
     document.getElementById('statHigh').textContent = high;
-    document.getElementById('statProgress').textContent = pending - high;
+    document.getElementById('statDone').textContent = done;
   }
 
-  window.setTrackerFilter = function(filter, btn){
-    currentTrackerFilter = filter;
-    var btns = document.querySelectorAll('#trackerFilters .filter-pill');
-    btns.forEach(function(b){ b.classList.remove('active'); });
+  window.setTrackerMonth = function(month, btn){
+    currentMonthFilter = month;
+    document.querySelectorAll('#monthFilters .filter-pill').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderTracker();
+  };
+
+  window.setTrackerWeek = function(week, btn){
+    currentWeekFilter = week;
+    document.querySelectorAll('#weekFilters .filter-pill').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderTracker();
+  };
+
+  window.setTrackerOwner = function(owner, btn){
+    currentOwnerFilter = owner;
+    document.querySelectorAll('#ownerFilters .filter-pill').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderTracker();
+  };
+
+  window.setTrackerStatus = function(status, btn){
+    currentStatusFilter = status;
+    currentPriorityFilter = 'all';
+    document.querySelectorAll('#statusFilters .filter-pill').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderTracker();
+  };
+
+  window.setTrackerPriority = function(priority, btn){
+    currentPriorityFilter = priority;
+    currentStatusFilter = 'all';
+    document.querySelectorAll('#statusFilters .filter-pill').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
     renderTracker();
   };
@@ -3321,7 +4658,7 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   window.toggleActionDone = function(id){
     var item = rawActionPool.find(function(x){ return x.id === id; });
     if(item){
-      item.done = !item.done;
+      item.status = (item.status === 'done') ? 'pending' : 'done';
       updateTrackerStats();
       renderTracker();
     }
@@ -3332,16 +4669,19 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
     var query = (document.getElementById('trackerSearch').value || '').trim().toLowerCase();
 
     var filtered = rawActionPool.filter(function(item){
-      if(currentTrackerFilter === 'done' && !item.done) return false;
-      if(currentTrackerFilter === 'pending' && item.done) return false;
-      if(currentTrackerFilter === 'high' && (item.done || item.priority !== 'high')) return false;
-      if(currentTrackerFilter.startsWith('#') && item.source !== currentTrackerFilter) return false;
+      if(currentMonthFilter !== 'all' && item.month !== currentMonthFilter) return false;
+      if(currentWeekFilter !== 'all' && item.week !== currentWeekFilter) return false;
+      if(currentOwnerFilter !== 'all' && !item.owner.includes(currentOwnerFilter)) return false;
+      if(currentStatusFilter !== 'all' && item.status !== currentStatusFilter) return false;
+      if(currentPriorityFilter !== 'all' && item.priority !== currentPriorityFilter) return false;
 
       if(query){
         var match = item.title.toLowerCase().includes(query) ||
                     item.desc.toLowerCase().includes(query) ||
-                    item.note.toLowerCase().includes(query) ||
-                    item.source.toLowerCase().includes(query);
+                    item.owner.toLowerCase().includes(query) ||
+                    item.deadline.toLowerCase().includes(query) ||
+                    (item.decision && item.decision.toLowerCase().includes(query)) ||
+                    item.pdca.toLowerCase().includes(query);
         if(!match) return false;
       }
       return true;
@@ -3354,19 +4694,28 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
 
     var html = '';
     filtered.forEach(function(item){
-      var isDone = item.done;
+      var isDone = (item.status === 'done');
+      var isProgress = (item.status === 'in-progress');
+      var isHigh = (item.priority === 'high');
+
       html += '<div class="action-item ' + (isDone ? 'done' : '') + '">' +
-        '<input type="checkbox" class="action-check" ' + (isDone ? 'checked' : '') + ' onchange="toggleActionDone(\'' + item.id + '\')">' +
+        '<input type="checkbox" class="action-check" ' + (isDone ? 'checked' : '') + ' onchange="toggleActionDone('' + item.id + '')">' +
         '<div class="action-content">' +
-          '<div class="action-title">' + item.title + '</div>' +
+          '<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap">' +
+            '<span class="badge-month">🗓️ ' + item.month + '</span>' +
+            '<span class="badge-week">週會: ' + item.week + '</span>' +
+            '<span class="badge-owner">👤 負責人: ' + item.owner + '</span>' +
+            '<span class="badge-deadline">📅 期限: ' + item.deadline + '</span>' +
+          '</div>' +
+          '<div class="action-title" style="margin-top:4px">' + item.title + '</div>' +
           '<div class="action-details">' + item.desc + '</div>' +
-          (item.note ? '<div class="' + (isDone ? 'action-conclusion' : 'action-warning') + '">' + item.note + '</div>' : '') +
+          (item.decision ? '<div class="' + (isDone ? 'action-conclusion' : 'action-warning') + '"><b>⚖️ 主管裁定/進展：</b>' + item.decision + '</div>' : '') +
         '</div>' +
         '<div class="action-badges">' +
-          '<span class="chip ' + (isDone ? 'green' : (item.priority === 'high' ? 'coral' : 'amber')) + '">' +
-            (isDone ? '✓ 已完成/裁定' : (item.priority === 'high' ? '🔥 高優先級' : '中優先級')) +
+          '<span class="chip ' + (isDone ? 'green' : (isHigh ? 'coral' : 'amber')) + '">' +
+            (isDone ? '✓ 已完成/已裁定' : (isProgress ? '⏳ 進行中' : (isHigh ? '🔥 高優先級' : '中優先級'))) +
           '</span>' +
-          '<span class="chip slate">' + item.source + '</span>' +
+          '<span class="chip slate">' + item.id + '</span>' +
           '<span style="font-size:.7rem; color:var(--muted)">' + item.pdca + '</span>' +
         '</div>' +
       '</div>';
@@ -3378,33 +4727,43 @@ td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
   window.exportTrackerText = function(){
     var lines = [
       '================================================================',
-      '南區業務週會主席待辦行動追蹤報告',
+      '南區業務週會主席待辦行動追蹤報告（按月度與每週進展組織）',
       '匯出時間：' + new Date().toLocaleString('zh-TW'),
-      '主席：葉大衛 (David Yeh) ｜ 系統：大衛雲 2.0',
+      '會議主席：葉大衛 (David Yeh) ｜ 系統：大衛雲 2.0',
       '================================================================\n'
     ];
 
-    rawActionPool.forEach(function(item, idx){
-      lines.push((idx + 1) + '. [' + (item.done ? '✓ 已完成' : '待處理') + '] ' + item.title);
-      lines.push('   優先級：' + (item.priority === 'high' ? '高' : '中') + ' ｜ 來源：' + item.source + ' ｜ 歸屬：' + item.pdca);
-      lines.push('   說明：' + item.desc);
-      if(item.note) lines.push('   備註/結論：' + item.note);
-      lines.push('');
+    var months = ['2026-10', '2026-09', '2026-08', '2026-07'];
+    months.forEach(function(m){
+      var mItems = rawActionPool.filter(function(x){ return x.month === m; });
+      if(mItems.length > 0){
+        lines.push('【' + m + ' 月度進展待辦事項】（共 ' + mItems.length + ' 項）');
+        lines.push('----------------------------------------------------------------');
+        mItems.forEach(function(item, idx){
+          var st = item.status === 'done' ? '已完成' : (item.status === 'in-progress' ? '進行中' : '待跟進');
+          lines.push((idx + 1) + '. [' + st + ' | ' + (item.priority === 'high' ? '🔥高' : '中') + '] ' + item.title);
+          lines.push('   👤 負責人：' + item.owner + ' ｜ 📅 截止期限：' + item.deadline + ' ｜ 🗓️ 週會：' + item.week);
+          lines.push('   說明：' + item.desc);
+          if(item.decision) lines.push('   ⚖️ 主管裁定：' + item.decision);
+          lines.push('');
+        });
+      }
     });
 
     var blob = new Blob(['\ufeff' + lines.join('\n')], {type:'text/plain;charset=utf-8'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = '南區業務週會_待辦追蹤報告_' + new Date().toISOString().slice(0,10) + '.txt';
+    a.download = '南區業務週會_月度每週待辦追蹤報告_' + new Date().toISOString().slice(0,10) + '.txt';
     document.body.appendChild(a); a.click();
     setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
   };
 
   window.copyTrackerText = function(){
-    var pendingItems = rawActionPool.filter(function(x){ return !x.done; });
-    var lines = ['【南區業務週會 · 待辦事項清單】（共 ' + pendingItems.length + ' 項待辦）\n'];
+    var pendingItems = rawActionPool.filter(function(x){ return x.status !== 'done'; });
+    var lines = ['【南區業務週會 · 待辦事項清單】（共 ' + pendingItems.length + ' 項未結）\n'];
     pendingItems.forEach(function(item, i){
-      lines.push((i + 1) + '. [' + (item.priority === 'high' ? '高' : '中') + '] ' + item.title + ' (' + item.source + ')');
+      lines.push((i + 1) + '. [' + (item.priority === 'high' ? '高' : '中') + '] ' + item.title +
+                 ' (👤 ' + item.owner + ' | 📅 ' + item.deadline + ')');
     });
     var text = lines.join('\n');
     if(navigator.clipboard){
